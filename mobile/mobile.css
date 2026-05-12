@@ -204,7 +204,7 @@ a { color: inherit; text-decoration: none; }
 .m-btn.gold { background: var(--gold); color: #fff; }
 
 /* ---------- X feed card ---------- */
-.m-xfeed { background: #000; color: #fff; padding: 26px 22px 30px; }
+.m-xfeed { background: var(--navy-deep); color: #fff; padding: 26px 22px 30px; }
 .m-xfeed-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
 .m-xfeed-avatar {
   width: 48px; height: 48px; border-radius: 50%;
