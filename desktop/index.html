@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Torah Jews — Not in our name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Frank+Ruhl+Libre:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F5F1E8;
+    --bg-deep:   #EDE7D7;
+    --ink:       #141414;
+    --ink-soft:  #2A2723;
+    --muted:     #6B6158;
+    --rule:      #D4CFC3;
+    --rule-soft: #E3DCCB;
+    /* Brand palette — from the Torah Jews logo */
+    --navy:      #26306B;   /* logo navy — TORAH JEWS letterforms */
+    --navy-deep: #1A2050;   /* deeper shade for hover/monument */
+    --red:       #D33038;   /* logo red — book page edges */
+    --red-deep:  #A8212A;   /* deeper red for primary CTA */
+    /* Legacy aliases — keep so existing rules don't break */
+    --burgundy:  var(--navy);
+    --brick:     var(--red);
+    --dark:      var(--navy-deep);
+
+    --serif: "Source Serif 4", Georgia, serif;
+    --hebrew: "Frank Ruhl Libre", Georgia, serif;
+    --ui: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+    --max: 1200px;
+    --gutter: clamp(18px, 4vw, 48px);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--ui);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .kicker {
+    font-family: var(--ui);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .kicker.burgundy { color: var(--burgundy); }
+
+  /* ============ Announcement ============ */
+  .announcement {
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--ui);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 12px var(--gutter);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .announcement b { color: #FFD262; font-weight: 700; }
+
+  /* ============ Breaking-news ticker ============ */
+  .ticker {
+    background: #8B2E1F;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    overflow: hidden;
+    position: relative;
+    font-family: var(--ui);
+  }
+  .ticker-inner { display: flex; align-items: stretch; }
+  .ticker-label {
+    flex: 0 0 auto;
+    background: #6E2416;
+    color: #FFD262;
+    padding: 10px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .ticker-label::after {
+    content: ""; position: absolute; top: 0; right: -12px; bottom: 0;
+    width: 12px; background: linear-gradient(to right, #6E2416, transparent);
+    pointer-events: none;
+  }
+  .ticker-dot {
+    width: 8px; height: 8px; background: #FFD262; border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(255,210,98,0.28);
+    animation: ticker-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes ticker-pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(255,210,98,0.28); }
+    50%      { box-shadow: 0 0 0 7px rgba(255,210,98,0.05); }
+  }
+  .ticker-track {
+    flex: 1 1 auto;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+  }
+  .ticker-run {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: ticker-scroll 64s linear infinite;
+    padding-left: 24px;
+  }
+  .ticker-run:hover { animation-play-state: paused; }
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 26px 10px 0;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .ticker-item::before {
+    content: "◆";
+    color: #FFD262;
+    font-size: 9px;
+    margin-right: -4px;
+  }
+  .ticker-item b { color: #FFD262; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px; margin-right: 4px; }
+  .ticker-item a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.3); text-underline-offset: 3px; }
+  .ticker-item a:hover { text-decoration-color: #FFD262; }
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (max-width: 620px) {
+    .ticker-label { padding: 9px 12px; font-size: 10px; letter-spacing: 0.16em; }
+    .ticker-item { font-size: 12px; padding: 9px 20px 9px 0; }
+    .ticker-run { animation-duration: 48s; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-run { animation: none; padding-left: 0; }
+    .ticker-track { mask-image: none; -webkit-mask-image: none; overflow-x: auto; }
+  }
+
+  /* ============ Nav ============ */
+  nav.primary {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 50;
+  }
+  nav.primary .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px;
+    padding: 16px var(--gutter);
+  }
+  .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink); }
+  .brand .mark {
+    width: 68px; height: 68px;
+    background: transparent;
+    background-image: url("assets/torahjews-logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    flex: 0 0 68px;
+  }
+  .brand .wordmark { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--navy); }
+  .brand .sub { display: block; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+  nav.primary ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; gap: 24px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  nav.primary ul a { white-space: nowrap; }
+  nav.primary a.navlink {
+    color: var(--ink); text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+  nav.primary a.navlink:hover { color: var(--red); border-bottom-color: var(--red); }
+
+  .cta-follow {
+    font-family: var(--ui); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #fff; background: var(--red);
+    padding: 11px 18px; text-decoration: none;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .cta-follow:hover { background: var(--red-deep); }
+
+  .mobile-toggle {
+    display: none;
+    background: none; border: 1px solid var(--ink);
+    padding: 8px 10px; cursor: pointer; border-radius: 2px;
+    font-size: 16px; line-height: 1;
+  }
+  #mobile-menu {
+    display: none;
+    border-top: 1px solid var(--rule);
+    padding: 8px var(--gutter);
+    background: var(--bg);
+  }
+  #mobile-menu.open { display: block; }
+  #mobile-menu a {
+    display: block; padding: 12px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15px; font-weight: 500;
+    color: var(--ink-soft); text-decoration: none;
+  }
+  #mobile-menu a:last-child { border-bottom: none; }
+
+  @media (max-width: 820px) {
+    nav.primary ul { display: none; }
+    .mobile-toggle { display: block; }
+    .cta-follow { padding: 9px 12px; font-size: 12px; }
+    .brand .sub { display: none; }
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    padding: clamp(48px, 9vw, 96px) 0 clamp(40px, 7vw, 72px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .wrap { max-width: 1100px; }
+  .hero .eye {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--burgundy); font-weight: 700;
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero .eye::before { content: ""; width: 40px; height: 3px; background: var(--burgundy); display: inline-block; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(40px, 7.6vw, 104px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0 0 32px;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  .hero h1 .burg { color: var(--burgundy); font-style: italic; font-weight: 700; }
+  .hero h1 .under { background: linear-gradient(transparent 62%, rgba(211,48,56,0.22) 62%, rgba(211,48,56,0.22) 88%, transparent 88%); padding: 0 2px; }
+  .hero .sub {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.1vw, 24px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 0 36px;
+    border-left: 3px solid var(--burgundy);
+    padding-left: 20px;
+  }
+  .hero .sub b { color: var(--ink); font-weight: 600; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    font-family: var(--ui); font-size: 14px; font-weight: 700;
+    text-decoration: none; padding: 15px 22px;
+    border-radius: 2px; letter-spacing: 0.04em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .12s ease, background .15s;
+  }
+  .btn.primary { background: var(--navy); color: #fff; box-shadow: 4px 4px 0 var(--red); }
+  .btn.primary:hover { background: var(--navy-deep); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--red); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--bg); }
+
+  /* ============ Section chrome ============ */
+  section.block { padding: clamp(56px, 8vw, 96px) 0; border-bottom: 1px solid var(--rule); }
+  .section-head {
+    margin-bottom: clamp(32px, 5vw, 56px);
+    max-width: 820px;
+  }
+  .section-head .num {
+    font-family: var(--ui); color: var(--burgundy);
+    font-size: 12px; font-weight: 700; margin-bottom: 14px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    display: inline-block; padding-bottom: 6px; border-bottom: 2px solid var(--burgundy);
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(30px, 4.8vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .section-head h2 em { font-style: italic; color: var(--burgundy); font-weight: 700; }
+  .section-head p {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* ============ Twitter / Voice of Rabbis feed — THE STAR ============ */
+  .feed-hero {
+    background: #1A2050;
+    color: #F5F1E8;
+    border-bottom: 1px solid #000;
+    padding: clamp(48px, 8vw, 88px) 0;
+  }
+  .feed-hero .wrap { max-width: 1180px; }
+  .feed-hero .banner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #3A4590;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .feed-hero .banner .left { display: flex; align-items: center; gap: 16px; }
+  .feed-hero .banner .x-logo {
+    width: 48px; height: 48px;
+    background: #F5F1E8; color: #1A2050;
+    display: grid; place-items: center;
+    font-family: var(--ui); font-weight: 900; font-size: 26px;
+    border-radius: 4px;
+  }
+  .feed-hero .banner .handle {
+    font-family: var(--ui); font-weight: 700;
+    font-size: clamp(22px, 3vw, 32px);
+    color: #F5F1E8; margin: 0;
+    line-height: 1.05;
+  }
+  .feed-hero .banner .handle .dim { color: #8a8f96; font-weight: 500; font-size: 0.7em; display: block; margin-top: 2px; letter-spacing: 0.02em; }
+
+  .feed-hero .follow-btn {
+    font-family: var(--ui); font-weight: 700; font-size: 15px;
+    background: #F5F1E8; color: #1A2050;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .feed-hero .follow-btn:hover { background: #fff; }
+
+  .feed-hero .headline {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(26px, 3.6vw, 44px);
+    line-height: 1.12; letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    text-wrap: balance;
+    max-width: 900px;
+  }
+  .feed-hero .headline em { color: #F5D88A; font-style: italic; }
+
+  .feed-hero .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid #3A4590;
+    border-bottom: 1px solid #3A4590;
+    margin-bottom: 32px;
+  }
+  .feed-hero .stats .s { text-align: left; }
+  .feed-hero .stats .n {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(22px, 3vw, 34px);
+    color: #F5F1E8; line-height: 1; margin-bottom: 6px;
+  }
+  .feed-hero .stats .n em { color: #F5D88A; font-style: italic; font-weight: 500; }
+  .feed-hero .stats .l {
+    font-family: var(--ui); font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #8a8f96;
+  }
+  @media (max-width: 640px) { .feed-hero .stats { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; } }
+
+  .feed-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 960px) { .feed-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .feed-grid { grid-template-columns: 1fr; } }
+
+  .tweet {
+    background: #222A5E;
+    border: 1px solid #3A4590;
+    border-radius: 8px;
+    padding: 18px 18px 14px;
+    font-family: var(--ui);
+    font-size: 15px;
+    line-height: 1.5;
+    color: #E6E1D3;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: border-color .2s, transform .15s;
+    cursor: pointer;
+  }
+  .tweet:hover { border-color: #F5D88A; transform: translateY(-2px); }
+  .tweet .who { display: flex; align-items: center; gap: 10px; }
+  .tweet .av {
+    width: 40px; height: 40px; border-radius: 999px;
+    background: linear-gradient(135deg, #26306B, #D33038);
+    display: grid; place-items: center; flex: 0 0 40px;
+    font-family: var(--serif); font-weight: 700; color: #fff; font-size: 15px; letter-spacing: -0.02em;
+  }
+  .tweet .who .nm { font-weight: 700; color: #F5F1E8; font-size: 14px; display: flex; align-items: center; gap: 4px; }
+  .tweet .who .nm .v {
+    width: 14px; height: 14px; background: #F5D88A; color: #1A2050;
+    border-radius: 999px; display: inline-grid; place-items: center;
+    font-size: 9px; font-weight: 900;
+  }
+  .tweet .who .hn { font-size: 12px; color: #8a8f96; }
+  .tweet .body { font-family: var(--ui); color: #E6E1D3; }
+  .tweet .body b { color: #F5D88A; font-weight: 600; }
+  .tweet .lang-chip { display: inline-block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a8f96; font-weight: 600; }
+  .tweet .meta {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #3A4590;
+    font-size: 12px; color: #8a8f96;
+  }
+  .tweet .meta .engage { display: flex; gap: 14px; }
+
+  .feed-hero .cta-row {
+    margin-top: 32px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+    padding-top: 24px; border-top: 1px solid #3A4590;
+  }
+  .feed-hero .handles {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    font-size: 13px; color: #8a8f96;
+  }
+  .feed-hero .handles b { color: #F5F1E8; font-weight: 600; }
+  .feed-hero .see-all {
+    font-family: var(--ui); font-weight: 600; font-size: 14px;
+    color: #F5D88A; text-decoration: none;
+    border-bottom: 1px solid #F5D88A; padding-bottom: 2px;
+  }
+
+  /* ============ Ledger — dramatic compare ============ */
+  .ledger-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .ledger-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+    border: 2px solid var(--ink);
+    border-bottom: none;
+    background: var(--ink);
+    color: #fff;
+  }
+  .ledger-side {
+    padding: 36px 38px 32px;
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .ledger-side.j { background: linear-gradient(135deg, #0E1C33 0%, #152947 100%); }
+  .ledger-side.z { background: linear-gradient(135deg, #3B1012 0%, #5A1A1E 100%); text-align: right; }
+  .ledger-side .stamp {
+    font-family: var(--ui);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ledger-side.z .stamp { justify-content: flex-end; }
+  .ledger-side .stamp::before,
+  .ledger-side.z .stamp::after {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+  }
+  .ledger-side.z .stamp::before { display: none; }
+  .ledger-side h3 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin: 0 0 12px;
+  }
+  .ledger-side h3 em { font-style: italic; }
+  .ledger-side.j h3 { color: #fff; }
+  .ledger-side.z h3 { color: #FFC95C; }
+  .ledger-side .age {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+  }
+  .ledger-side .age b { color: #fff; font-style: normal; font-weight: 700; font-family: var(--ui); font-size: 14px; letter-spacing: 0.1em; }
+
+  .ledger-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    width: 80px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 42px;
+    color: #FFC95C;
+    letter-spacing: -0.04em;
+    position: relative;
+  }
+  .ledger-vs::before,
+  .ledger-vs::after {
+    content: "";
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #FFC95C;
+  }
+  .ledger-vs::before { top: 24px; }
+  .ledger-vs::after  { bottom: 24px; }
+
+  .ledger-rows {
+    border: 2px solid var(--ink);
+    border-top: none;
+    background: var(--bg);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: background .3s;
+  }
+  .ledger-row:last-child { border-bottom: none; }
+  .ledger-row:hover { background: var(--bg-deep); }
+  .ledger-cell {
+    padding: 28px 38px;
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ledger-cell.z { text-align: right; }
+  .ledger-cell em { font-style: italic; color: var(--burgundy); font-weight: 600; }
+  .ledger-cell.j em { color: #0E1C33; }
+  .ledger-cell strong { color: var(--ink); font-weight: 700; }
+
+  .ledger-label {
+    width: 80px;
+    background: var(--ink);
+    color: #FFC95C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    padding: 16px 0;
+  }
+
+  .ledger-kicker {
+    padding: 26px 38px;
+    background: var(--bg-deep);
+    border-top: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .ledger-kicker .k-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 640px;
+  }
+  .ledger-kicker .k-text b {
+    font-style: normal;
+    font-family: var(--ui);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .ledger-kicker .k-cta {
+    font-family: var(--ui);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--burgundy);
+    padding-bottom: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ledger-cell { transition: none !important; }
+  }
+
+  @media (max-width: 780px) {
+    .ledger-header { grid-template-columns: 1fr; }
+    .ledger-side.z { text-align: left; }
+    .ledger-side.z .stamp { justify-content: flex-start; }
+    .ledger-side.z .stamp::after { display: none; }
+    .ledger-side.z .stamp::before { display: block; }
+    .ledger-vs { width: 100%; height: 52px; font-size: 28px; border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .ledger-vs::before { top: 50%; left: 24px; transform: translateY(-50%); }
+    .ledger-vs::after { bottom: auto; top: 50%; right: 24px; left: auto; transform: translateY(-50%); }
+    .ledger-row { grid-template-columns: 1fr; }
+    .ledger-label { width: 100%; writing-mode: horizontal-tb; transform: none; padding: 10px; font-size: 9px; }
+    .ledger-cell.z { text-align: left; }
+    .ledger-cell { padding: 20px 24px; font-size: 16px; }
+    .ledger-kicker { grid-template-columns: 1fr; padding: 22px 24px; }
+    .ledger-kicker .k-text { font-size: 18px; }
+  }
+
+  /* Row reveal on scroll */
+  /* ============ Ledger (legacy — kept for safety) ============ */
+  .ledger {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+  .ledger .col { background: var(--bg); padding: 32px 28px; }
+  .ledger .caption { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; font-weight: 600; }
+  .ledger h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.02em; margin: 0 0 4px; }
+  .ledger .heb { font-family: var(--hebrew); font-size: clamp(22px, 2.6vw, 30px); color: var(--ink-soft); direction: rtl; margin-bottom: 20px; }
+  .ledger dl { margin: 0; }
+  .ledger dl .row { display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 12px 0; border-top: 1px solid var(--rule-soft); }
+  .ledger dl .row:first-of-type { border-top: 1px solid var(--rule); }
+  .ledger dt { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding-top: 3px; }
+  .ledger dd { margin: 0; font-family: var(--serif); font-size: 15.5px; line-height: 1.45; color: var(--ink-soft); }
+  .ledger dd em { font-style: italic; color: var(--burgundy); }
+  @media (max-width: 780px) { .ledger { grid-template-columns: 1fr; gap: 1px; } .ledger dl .row { grid-template-columns: 84px 1fr; } }
+
+  /* ============ Stats prose ============ */
+  .prose-stats {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(22px, 3vw, 36px);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 1000px;
+    text-wrap: pretty;
+    margin: 0;
+  }
+  .prose-stats .num { color: var(--burgundy); font-weight: 600; font-style: italic; white-space: nowrap; }
+  .prose-stats .src { display: block; margin-top: 24px; font-family: var(--ui); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+  /* ============ Three Oaths ============ */
+  .oaths .list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 820px) { .oaths .list { grid-template-columns: 1fr; gap: 16px; } }
+  .oath {
+    background: var(--bg-deep);
+    border-left: 3px solid var(--burgundy);
+    padding: 28px 26px;
+  }
+  .oath .idx { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--burgundy); font-weight: 600; margin-bottom: 16px; }
+  .oath .heb { font-family: var(--hebrew); font-weight: 500; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.3; direction: rtl; color: var(--ink); margin-bottom: 16px; }
+  .oath h4 { font-family: var(--serif); font-weight: 600; font-size: clamp(18px, 2vw, 22px); line-height: 1.22; letter-spacing: -0.01em; margin: 0 0 10px; }
+  .oath p { font-family: var(--serif); font-size: 15.5px; line-height: 1.5; color: var(--muted); margin: 0; }
+  .oath .cite { margin-top: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+  /* ============ Monument quote ============ */
+  .monument { background: var(--dark); color: #EFE9D9; padding: clamp(72px, 11vw, 140px) 0; position: relative; }
+  .monument::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--burgundy); }
+  .monument blockquote {
+    margin: 0;
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(22px, 3.2vw, 40px);
+    line-height: 1.28; letter-spacing: -0.01em;
+    text-wrap: balance;
+    max-width: 980px;
+  }
+  .monument blockquote .q { color: #F5D88A; font-style: normal; }
+  .monument .attrib { margin-top: 28px; padding-top: 18px; border-top: 1px solid #3a3632; font-family: var(--ui); font-size: 13px; color: #B8AE99; letter-spacing: 0.02em; }
+  .monument .attrib b { color: #F5F1E8; font-weight: 700; }
+  .monument .kicker { color: #F5D88A; margin-bottom: 22px; font-size: 11px; }
+
+  /* ============ Book of Names ============ */
+  .names-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (max-width: 900px) { .names-grid { grid-template-columns: repeat(2, 1fr); } }
+  .person { background: var(--bg); padding: 18px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .person .portrait {
+    width: 100%; aspect-ratio: 4/5;
+    background: repeating-linear-gradient(135deg, #E2D9C3 0 6px, #D8CEB4 6px 12px);
+    filter: sepia(0.3) contrast(0.95);
+    position: relative; margin-bottom: 6px;
+  }
+  .person .portrait::after { content: "PORTRAIT"; position: absolute; inset: 0; display: grid; place-items: center; font-family: "Courier New", monospace; font-size: 9px; letter-spacing: 0.2em; color: #6B6158aa; }
+  .person .n { font-family: var(--serif); font-weight: 600; font-size: 15px; line-height: 1.2; }
+  .person .d { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .person .b { font-family: var(--serif); font-style: italic; font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+
+  .names-foot { margin-top: 28px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--rule); }
+  .names-foot .count { font-family: var(--serif); font-size: 18px; }
+  .names-foot .count b { color: var(--burgundy); font-weight: 600; }
+  .names-foot a { font-family: var(--ui); font-weight: 600; font-size: 13px; color: var(--burgundy); text-decoration: none; border-bottom: 1px solid var(--burgundy); padding-bottom: 2px; }
+
+  /* ============ Press feed ============ */
+  .press ol { list-style: none; margin: 0; padding: 0; }
+  .press li {
+    display: grid;
+    grid-template-columns: 140px 110px 1fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .press li:last-child { border-bottom: 1px solid var(--rule); }
+  .press li:hover { background: rgba(122,26,26,0.03); }
+  .press li .kick { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--burgundy); font-weight: 700; }
+  .press li .date { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .press li .headline { font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .press li .dek { font-family: var(--serif); font-style: italic; font-size: 14.5px; line-height: 1.45; color: var(--muted); margin: 0; }
+  .press li:hover .headline { color: var(--burgundy); }
+  @media (max-width: 780px) {
+    .press li { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+    .press li .date { color: var(--muted); }
+  }
+
+  /* ============ CTA trio ============ */
+  .cta-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
+  @media (max-width: 820px) { .cta-trio { grid-template-columns: 1fr; } }
+  .cta-trio .item { background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; }
+  .cta-trio .item .n { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--burgundy); font-weight: 500; line-height: 1; }
+  .cta-trio .item h4 { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: -0.015em; margin: 0; }
+  .cta-trio .item p { font-family: var(--serif); font-size: 15.5px; line-height: 1.5; color: var(--muted); margin: 0; flex: 1; }
+  .cta-trio .item .btn { align-self: flex-start; margin-top: 8px; }
+  .cta-trio .urgent .btn { background: var(--brick); color: #fff; border: none; }
+  .cta-trio .urgent .btn:hover { background: var(--burgundy); }
+
+  /* ============ Closing ============ */
+  .closing {
+    background: var(--bg); padding: clamp(64px, 10vw, 120px) 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: center;
+  }
+  .closing .heb { font-family: var(--hebrew); font-weight: 500; font-size: clamp(44px, 8vw, 92px); line-height: 1; color: var(--ink); direction: rtl; margin: 0 0 16px; }
+  .closing .en { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(34px, 6vw, 68px); color: var(--burgundy); margin: 0 0 22px; letter-spacing: -0.02em; line-height: 1.05; }
+  .closing .attrib { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--muted); }
+  .closing .attrib::before { content: "— "; }
+
+  /* ============ Footer ============ */
+  footer { background: var(--dark); color: #C9BFA9; padding: 56px 0 24px; font-family: var(--ui); }
+  footer .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid #3a3632; }
+  @media (max-width: 820px) { footer .top { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  @media (max-width: 520px) { footer .top { grid-template-columns: 1fr; } }
+  footer h5 { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8a8275; margin: 0 0 14px; font-weight: 700; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; font-size: 14px; }
+  footer a { color: #DFD3BC; text-decoration: none; }
+  footer a:hover { color: #F5D88A; }
+  footer .brand-lg { font-family: var(--serif); font-weight: 600; font-size: 22px; color: #EFE9D9; margin-bottom: 10px; }
+  footer .brand-lg em { font-style: italic; color: #F5D88A; font-weight: 500; }
+  footer .blurb { font-size: 14px; line-height: 1.55; color: #B8AE99; max-width: 34ch; }
+  footer .blurb .heb { font-family: var(--hebrew); color: #F5D88A; }
+  footer .legal { display: flex; justify-content: space-between; padding-top: 20px; gap: 16px; flex-wrap: wrap; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a8275; }
+
+  /* ============ Tweaks ============ */
+  #tweaks { position: fixed; bottom: 16px; right: 16px; z-index: 100; background: var(--bg); border: 1px solid var(--ink); padding: 18px 20px 16px; width: 260px; font-family: var(--ui); font-size: 12px; display: none; box-shadow: 0 20px 40px rgba(20,20,20,0.15); }
+  #tweaks.on { display: block; }
+  #tweaks .t { font-family: var(--serif); font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  #tweaks .st { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; font-weight: 600; }
+  #tweaks label { display: block; margin-bottom: 12px; }
+  #tweaks label .lab { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+  #tweaks label .val { color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 600; }
+  #tweaks input[type=range] { width: 100%; }
+  #tweaks .swatches { display: flex; gap: 6px; }
+  #tweaks .swatches button { width: 28px; height: 28px; border: 1px solid var(--rule); cursor: pointer; padding: 0; border-radius: 2px; }
+  #tweaks .swatches button.on { outline: 2px solid var(--ink); outline-offset: 2px; }
+  @media (max-width: 520px) { #tweaks { left: 12px; right: 12px; width: auto; bottom: 12px; } }
+</style>
+</head>
+<body>
+
+<!-- Breaking-news ticker (edit items below) -->
+<div class="ticker" role="region" aria-label="Breaking news">
+  <div class="ticker-inner">
+    <div class="ticker-label"><span class="ticker-dot" aria-hidden="true"></span>Breaking</div>
+    <div class="ticker-track">
+      <div class="ticker-run" id="ticker-run">
+        <span class="ticker-item"><b>Apr 12</b> Rabbi Moshe Dovid Katz issues official statement on the Rafie Nia Synagogue destruction</span>
+        <span class="ticker-item"><b>Apr 7</b> Torah Jews condemns the Golders Green Hatzalah ambulance attack unequivocally</span>
+        <span class="ticker-item"><b>Mar 24</b> Public statement issued following escalation in Jerusalem — full text on @TorahJews</span>
+        <span class="ticker-item"><b>Mar 12</b> Rabbi Katz addresses Yeshiva Chasan Sofer on the Three Oaths and current events</span>
+        <span class="ticker-item"><b>Feb 28</b> Central Rabbinical Congress reaffirms opposition to Zionist conscription of yeshiva students</span>
+        <span class="ticker-item"><b>Feb 14</b> New translation of Vayoel Moshe chapter on the Three Oaths released in French</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="announcement">
+  <b>The State of Israel does NOT represent Judaism</b> &nbsp;·&nbsp; or the Jewish People.
+</div>
+
+<nav class="primary">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true" style="background-image:url('assets/torahjews-logo.png');background-size:contain;background-position:center;background-repeat:no-repeat;width:68px;height:68px;display:inline-block;flex:0 0 68px;"></span>
+      <span>
+        <span class="wordmark">Torah Jews</span>
+        <span class="sub">Natruna · Est. 2003</span>
+      </span>
+    </a>
+    <ul>
+      <li><a class="navlink" href="index.html">Home</a></li>
+      <li><a class="navlink" href="about.html">About</a></li>
+      <li><a class="navlink" href="torah-on-zionism.html">Torah on Zionism</a></li>
+      <li><a class="navlink" href="rabbinical-quotations.html">Rabbinical Quotations</a></li>
+      <li><a class="navlink" href="support.html">Support</a></li>
+    </ul>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a class="cta-follow" href="support.html">Support Now</a>
+      <button class="mobile-toggle" id="mt" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="torah-on-zionism.html">Torah on Zionism</a>
+    <a href="rabbinical-quotations.html">Rabbinical Quotations</a>
+    <a href="support.html">Support</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eye">Torah Jews &nbsp;·&nbsp; Natruna &nbsp;·&nbsp; Brooklyn, NY</div>
+    <h1>
+      Not all Jews are <span class="burg">Zionists.</span>
+    </h1>
+    <p class="sub">
+      Orthodox Jews all across the world oppose the Zionist state. <b>What they do does not represent us. What they do violates our Torah.</b>
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#feed">Follow @TorahJews on 𝕏 →</a>
+      <a class="btn ghost" href="#difference">Understand the difference</a>
+    </div>
+  </div>
+</section>
+
+<!-- TWITTER FEED — the hero asset -->
+ <section class="feed-hero" id="feed">
+  <div class="wrap">
+
+    <!-- Elfsight Twitter Feed | Untitled Twitter Feed -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-abf2c344-59db-4edd-84c8-306f69d9589c" data-elfsight-app-lazy></div>
+
+  </div>
+</section>
+
+<script async src="https://platform.twitter.com/widgets.js"></script>
+
+<!-- <section class="feed-hero" id="feed">
+  <div class="wrap">
+    <div class="banner">
+      <div class="left">
+        <div class="x-logo">𝕏</div>
+        <div>
+          
+          <div class="handle">@TorahJews<span class="dim">Real-time clarifications · Torah Jews on 𝕏</span></div>
+        </div>
+      </div>
+      <a class="follow-btn" href="https://x.com/TorahJews" target="_blank" rel="noopener">Follow on 𝕏</a>
+    </div>
+
+    <h2 class="headline">
+      When Israel's actions make headlines, we tell the world: <em>that is not Judaism.</em> Follow us for real-time responses to current events.
+    </h2>
+
+    <div class="stats">
+      <div class="s"><div class="n"><em>𝕏</em></div><div class="l">@TorahJews</div></div>
+      <div class="s"><div class="n"><em>f</em></div><div class="l">facebook.com/torahjews</div></div>
+      <div class="s"><div class="n"><em>IG</em></div><div class="l">@torahjews</div></div>
+      <div class="s"><div class="n"><em>TT</em></div><div class="l">@torahjews on TikTok</div></div>
+    </div>
+
+    <div class="feed-grid">
+      <article class="tweet">
+        <div class="who">
+          <div class="av">TJ</div>
+          <div>
+            <div class="nm">Torah Jews <span class="v">✓</span></div>
+            <div class="hn">@TorahJews · 2h</div>
+          </div>
+        </div>
+        <div class="body">Every instance of military aggression, oppression, or human rights violations carried out by the Zionist state is fundamentally at odds with Torah law. <b>These actions do not represent the Jewish people, nor do they embody Judaism.</b></div>
+        <div class="lang-chip">Statement</div>
+        <div class="meta">
+          <div class="engage">♡ 4.2K &nbsp; ↺ 1.8K &nbsp; ❝ 512</div>
+          <span>2h</span>
+        </div>
+      </article>
+
+      <article class="tweet">
+        <div class="who">
+          <div class="av">TJ</div>
+          <div>
+            <div class="nm">Torah Jews <span class="v">✓</span></div>
+            <div class="hn">@TorahJews · 6h</div>
+          </div>
+        </div>
+        <div class="body"><b>The Satmar Rebbe, zt"l:</b> <em>"We must have self-sacrifice to let the nations of the world know that these wicked men (Zionists) are not the representatives of the Jewish people…"</em> — Kinus Haklali, 1961.</div>
+        <div class="lang-chip">Rabbinic Quote</div>
+        <div class="meta">
+          <div class="engage">♡ 9.1K &nbsp; ↺ 3.4K &nbsp; ❝ 840</div>
+          <span>6h</span>
+        </div>
+      </article>
+
+      <article class="tweet">
+        <div class="who">
+          <div class="av">TJ</div>
+          <div>
+            <div class="nm">Torah Jews <span class="v">✓</span></div>
+            <div class="hn">@TorahJews · 1d</div>
+          </div>
+        </div>
+        <div class="body">Public statement on the <b>Golders Green Hatzalah ambulance attack</b>. We condemn this violence unequivocally. Read the full statement on our site.</div>
+        <div class="lang-chip">Public Statement</div>
+        <div class="meta">
+          <div class="engage">♡ 12.7K &nbsp; ↺ 5.2K &nbsp; ❝ 1.1K</div>
+          <span>1d</span>
+        </div>
+      </article>
+
+      <article class="tweet">
+        <div class="who">
+          <div class="av">TJ</div>
+          <div>
+            <div class="nm">Torah Jews <span class="v">✓</span></div>
+            <div class="hn">@TorahJews · 2d</div>
+          </div>
+        </div>
+        <div class="body"><b>Reb Chaim Brisker:</b> <em>"The Jewish people have suffered many plagues — the Sadducees, Karaites, Hellenisers, Shabbesai Zvi, Haskalah, Reform and many others. But the strongest of them all is Zionism."</em> — <i>Mishkenos Haro'im</i> p. 269.</div>
+        <div class="lang-chip">Rabbinic Quote</div>
+        <div class="meta">
+          <div class="engage">♡ 18.4K &nbsp; ↺ 8.9K &nbsp; ❝ 2.3K</div>
+          <span>2d</span>
+        </div>
+      </article>
+
+      <article class="tweet">
+        <div class="who">
+          <div class="av">TJ</div>
+          <div>
+            <div class="nm">Torah Jews <span class="v">✓</span></div>
+            <div class="hn">@TorahJews · 3d</div>
+          </div>
+        </div>
+        <div class="body">New on the site: <b>"Truth and Peace"</b> by Rabbi Yosef Chaim Sonnenfeld, Chief Rabbi of Jerusalem, written before the establishment of Israel — affirming clearly that Jews oppose subjugating Palestinians.</div>
+        <div class="lang-chip">Historical</div>
+        <div class="meta">
+          <div class="engage">♡ 6.8K &nbsp; ↺ 3.1K &nbsp; ❝ 674</div>
+          <span>3d</span>
+        </div>
+      </article>
+
+      <article class="tweet">
+        <div class="who">
+          <div class="av">TJ</div>
+          <div>
+            <div class="nm">Torah Jews <span class="v">✓</span></div>
+            <div class="hn">@TorahJews · 4d</div>
+          </div>
+        </div>
+        <div class="body">Rabbi Moshe Dovid Katz's official statement on the <b>Rafie Nia Synagogue destruction</b>. Read at torahjews.org.</div>
+        <div class="lang-chip">Public Statement</div>
+        <div class="meta">
+          <div class="engage">♡ 22.1K &nbsp; ↺ 11.4K &nbsp; ❝ 3.8K</div>
+          <span>4d</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta-row">
+      <div class="handles">
+        Follow: &nbsp;
+        <b>@TorahJews · 𝕏</b> &nbsp;&nbsp; <b>facebook.com/torahjews</b> &nbsp;&nbsp; <b>@torahjews · IG</b> &nbsp;&nbsp; <b>@torahjews · TikTok</b>
+      </div>
+      <a class="see-all" href="https://x.com/TorahJews" target="_blank" rel="noopener">Open the full feed on 𝕏 →</a>
+    </div>
+  </div>
+</section> -->
+
+<!-- Ledger -->
+<section class="block" id="difference">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">i.</div>
+      <h2>The difference, <em>set plainly</em>.</h2>
+      <p>The world must understand this fundamental truth: the Zionist government does not speak for, nor act in the name of, the Jewish people.</p>
+    </div>
+
+    <div class="ledger-wrap" id="ledger-wrap">
+      <div class="ledger-header">
+        <div class="ledger-side j">
+          <div class="stamp">Since Mount Sinai · <b>3,300 Years</b></div>
+          <h3>Judaism</h3>
+          <div class="age"><em>"A people bound by covenant."</em></div>
+        </div>
+        <div class="ledger-vs" aria-hidden="true">vs.</div>
+        <div class="ledger-side z">
+          <div class="stamp"><b>150 Years</b> · Since the First Zionist Congress, 1897</div>
+          <h3>Zionism</h3>
+          <div class="age"><em>"A modern political project."</em></div>
+        </div>
+      </div>
+
+      <div class="ledger-rows">
+        <div class="ledger-row">
+          <div class="ledger-cell j">A religious collective that received the <em>Torah at Mount Sinai</em>, in the desert, with no shared land — a people defined by covenant, not territory. <strong>(Deuteronomy 27:9)</strong></div>
+          <div class="ledger-label">Origin</div>
+          <div class="ledger-cell z">A nineteenth-century political movement that <em>co‑opted Jewish identity</em>, transforming sacred faith into earthly nationalism and political ambition.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-cell j">The <em>bearers of an eternal tradition</em> — bound across continents and centuries by Torah, halacha, and the memory of Sinai.</div>
+          <div class="ledger-label">Form</div>
+          <div class="ledger-cell z">A <em>nation-state</em> with armies, parliaments, and foreign ministries. A flag, a border, a military.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-cell j"><em>Torah Law.</em> We follow G‑d's commandments, live in peace with our neighbors, and uphold the core Torah values of kindness and compassion toward <strong>every human being</strong>.</div>
+          <div class="ledger-label">Method</div>
+          <div class="ledger-cell z"><em>Force.</em> Zionists rely on military power, nationalist ideology, and actions that contradict fundamental Torah principles.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-cell j">A <em>patient</em> awaiting of divine redemption — borne with humility through every exile, generation upon generation.</div>
+          <div class="ledger-label">Posture</div>
+          <div class="ledger-cell z">An <em>impatient</em> forcing of the hand of history — what the Talmud calls "rebelling against the nations."</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-cell j">Speaks for the Jewish people — in the voice of its <em>rabbis and its tradition</em>, for three thousand years.</div>
+          <div class="ledger-label">Voice</div>
+          <div class="ledger-cell z">Speaks only for <em>itself</em> — a political state and its elected officials. <strong>Not for Jews. Not for Judaism.</strong></div>
+        </div>
+      </div>
+
+      <div class="ledger-kicker">
+        <div class="k-text"><b>The bottom line</b>These are not two versions of the same thing. They are <em>different in kind</em> — one is a religion, the other is a nationalism.</div>
+        <a class="k-cta" href="torah-on-zionism.html">See the full argument →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats prose -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">ii.</div>
+      <h2>When Zionists act in violence — <em>that is not Judaism</em>.</h2>
+    </div>
+    <p class="prose-stats">
+      Every instance of military aggression, oppression, or human rights violations carried out by the Zionist state is fundamentally at odds with Torah law. <span class="num">These actions do not represent the Jewish people, nor do they embody Judaism.</span>
+      <span class="src">Torah Jews · Natruna · Founded by Rabbi Moshe Dovid Katz with the Satmar community</span>
+    </p>
+  </div>
+</section>
+
+<!-- Three Oaths -->
+<section class="block oaths">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">iii. — Talmud, Kesubos 111a</div>
+      <h2>The Three Oaths: <em>why Jews cannot have a state</em>.</h2>
+      <p><em>"G‑d made the Jewish people swear not to return to Israel by force, not to rebel against the nations, and not to hasten the redemption."</em> — the foundation of our patient faith.</p>
+    </div>
+    <div class="list">
+      <div class="oath">
+        <div class="idx">Oath the First</div>
+        <h4>Not to return to Israel <em>by force</em>.</h4>
+        <p>Israel shall not ascend to the Land as a wall — that is, collectively, by force of arms or political project.</p>
+        <div class="cite">Talmud · Kesubos 111a</div>
+      </div>
+      <div class="oath">
+        <div class="idx">Oath the Second</div>
+        <h4>Not to <em>rebel against the nations</em> of the world.</h4>
+        <p>Exile is a condition to be borne with humility — not the premise of a nationalist insurgency.</p>
+        <div class="cite">Talmud · Kesubos 111a</div>
+      </div>
+      <div class="oath">
+        <div class="idx">Oath the Third</div>
+        <h4>Not to <em>hasten the redemption</em>.</h4>
+        <p>The return is a matter for G‑d, in His time — not to be forced by human hand.</p>
+        <div class="cite">Talmud · Kesubos 111a</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Monument quote -->
+<section class="monument">
+  <div class="wrap">
+    <div class="kicker">Our Guide & Mentor · Kinus Haklali, 1961</div>
+    <blockquote>
+      <span class="q">"</span>We must have self-sacrifice to let the nations of the world know that these wicked men (Zionists) are not the representatives of the Jewish people, and that observant Jews have no connection with them — it would be one of the biggest Mitzvos to do so!<span class="q">"</span>
+    </blockquote>
+    <div class="attrib"><b>Rabbi Joel Teitelbaum zt"l</b> · Satmar Rebbe · 1887–1979 · Printed in <i>Divrei Yoel, Naso</i> p. 128–9</div>
+  </div>
+</section>
+
+<!-- Book of Names -->
+<section class="block" id="rabbis">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">iv.</div>
+      <h2>Wisdom across <em>generations</em>.</h2>
+      <p>Great Torah minds, united in understanding.</p>
+    </div>
+    <div class="names-grid">
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">Satmar Rebbe</div>
+        <div class="d">R. Joel Teitelbaum · 1887–1979</div>
+        <div class="b">"It is a serious danger to the Jewish people if they point to those who do not keep the Torah and call them the leaders of the Jewish people. All the nations are thereby misled to think that they speak in the name of Jewry, and thus they are transformed into anti-Semites." <em>— Kinus Haklali, 1961</em></div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">Rabbi Samson Raphael Hirsch</div>
+        <div class="d">1808–1889</div>
+        <div class="b">"The Torah united all the individual Jews and made them a nation — not because of their past, nor because of their future, but because they are the bearers of an eternal tradition, a people that fulfills its covenant with Hashem." <em>— Horeb</em></div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">Reb Chaim Brisker</div>
+        <div class="d">R. Chaim Soloveitchik · 1853–1918</div>
+        <div class="b">"The Jewish people have suffered many plagues — the Sadducees, Karaites, Shabbesai Zvi, Haskalah, Reform and many others. But the strongest of them all is Zionism, because its heresy focuses on the center of Judaism." <em>— Mishkenos Haro'im p. 269</em></div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">Rabbi Yosef Chaim Sonnenfeld</div>
+        <div class="d">Chief Rabbi of Jerusalem · 1848–1932</div>
+        <div class="b"><em>Truth and Peace</em> — a historic publication written before the establishment of Israel, clearly affirming that Jews oppose subjugating Palestinians.</div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">The Brisker Rav</div>
+        <div class="d">R. Yitzchok Zev Soloveitchik · 1886–1959</div>
+        <div class="b">"The Zionist state is built on a foundation that denies the Torah. No Jew who is loyal to our heritage can lend it legitimacy." <em>— Collected responsa</em></div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">The Chazon Ish</div>
+        <div class="d">R. Avraham Yeshaya Karelitz · 1878–1953</div>
+        <div class="b">The leading halachic authority of the pre-state Yishuv. Guided the Torah world's principled separation from political Zionism and insisted on its religious illegitimacy. <em>— Collected rulings</em></div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">Rabbi Elchonon Wasserman</div>
+        <div class="d">Rosh Yeshiva of Baranovich · 1874–1941</div>
+        <div class="b">"The nationalist reinterpretation of Jewish identity is a grave religious error. We are a people because of Torah — not in spite of it, not alongside it." <em>— Ikvesa D'Meshicha</em></div>
+      </div>
+      <div class="person">
+        <div class="portrait"></div>
+        <div class="n">The Munkacser Rebbe</div>
+        <div class="d">R. Chaim Elazar Shapiro · 1868–1937</div>
+        <div class="b">Pre-war leader of Hungarian Orthodoxy who allied with the Satmar Rebbe in opposition to both political Zionism and the accommodationist path of Agudat Israel. <em>— Minchas Elazar</em></div>
+      </div>
+    </div>
+    <div class="names-foot">
+      <div class="count">Every Torah authority condemned Zionism from the very beginning; <b>none ever endorsed it.</b></div>
+      <a href="https://torahjews.org/rabbinic-quotations">Read all Rabbinic Quotations →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Press -->
+<section class="block press" id="articles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">v.</div>
+      <h2>Speaking <em>truth</em> to the world.</h2>
+      <p>Stay informed about our efforts to distinguish true Judaism from nationalist Zionism.</p>
+    </div>
+    <ol>
+      <li>
+        <div class="kick">Historical</div>
+        <div class="date">April 12, 2026</div>
+        <div>
+          <p class="headline">Truth and Peace, by Rabbi Yosef Chaim Sonnenfeld.</p>
+          <p class="dek">This historic publication by the Chief Rabbi of Jerusalem, written before the establishment of Israel, clearly affirms that Jews oppose subjugating Palestinians.</p>
+        </div>
+      </li>
+      <li>
+        <div class="kick">Public Statement</div>
+        <div class="date">April 7, 2026</div>
+        <div>
+          <p class="headline">Official Statement on Rafie Nia Synagogue Destruction.</p>
+          <p class="dek">By Rabbi Moshe Dovid Katz · Torah Jews.</p>
+        </div>
+      </li>
+      <li>
+        <div class="kick">Public Statement</div>
+        <div class="date">March 24, 2026</div>
+        <div>
+          <p class="headline">Public Statement on the Golders Green Hatzalah Ambulance Attack.</p>
+          <p class="dek">Torah Jews condemns this violence unequivocally.</p>
+        </div>
+      </li>
+      <li>
+        <div class="kick">FAQ</div>
+        <div class="date">Do all Jews support Israel?</div>
+        <div>
+          <p class="headline">No. A majority of Torah-observant Jews worldwide oppose the Zionist state.</p>
+          <p class="dek">Every Torah authority condemned Zionism from the very beginning; none ever endorsed it.</p>
+        </div>
+      </li>
+      <li>
+        <div class="kick">FAQ</div>
+        <div class="date">Is anti-Zionism antisemitism?</div>
+        <div>
+          <p class="headline">No. We are Torah-observant Jews opposing Zionism on religious and moral grounds.</p>
+          <p class="dek">Our Rabbis considered 'Jewish' nationalism akin to idol worship.</p>
+        </div>
+      </li>
+      <li>
+        <div class="kick">FAQ</div>
+        <div class="date">Why don't we hear about Jews who oppose Israel?</div>
+        <div>
+          <p class="headline">The Zionist movement has often portrayed itself as speaking for all Jews.</p>
+          <p class="dek">— strategically silencing the Torah-held opposition. We're here to clearly present the truth.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- CTA trio -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">vi.</div>
+      <h2>Help us set the <em>record straight</em>.</h2>
+      <p>We state the truth clearly and unequivocally: Zionism stands in direct opposition to Judaism.</p>
+    </div>
+    <div class="cta-trio">
+      <div class="item">
+        <span class="n">i.</span>
+        <h4>Share the Truth.</h4>
+        <p>Help us reach more people with the message that millions of Jews oppose Zionism on religious grounds.</p>
+        <a class="btn primary" href="https://x.com/TorahJews" target="_blank" rel="noopener">Follow @TorahJews on 𝕏 →</a>
+      </div>
+      <div class="item">
+        <span class="n">ii.</span>
+        <h4>Media & Press.</h4>
+        <p>Journalists: contact us for statements when covering Zionist actions. We provide the Torah perspective.</p>
+        <a class="btn ghost" href="mailto:info@torahjews.org">Press contact →</a>
+      </div>
+      <div class="item urgent">
+        <span class="n">iii.</span>
+        <h4>Support Now.</h4>
+        <p>Torah Jews (Natruna) is sustained entirely by readers. Educational resources, translation, and real-time counter-speech.</p>
+        <a class="btn" href="https://donary.com/1740" target="_blank" rel="noopener">Donate →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Closing -->
+<section class="closing">
+  <div class="wrap">
+    <p class="en">Not in our name.</p>
+    <p class="attrib">When acts of violence are carried out by the Zionist state, Orthodox Jews around the world affirm clearly and unequivocally.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="brand-lg">Torah Jews <em>· Natruna</em></div>
+        <div class="blurb">Founded more than twenty years ago by <b>Rabbi Moshe Dovid Katz</b>, at the request and with the encouragement of the Satmar community, to serve as the Torah‑based voice of opposition to Zionism. Also known as Natruna.</div>
+      </div>
+      <div>
+        <h5>Torah on Zionism</h5>
+        <ul>
+          <li><a href="three-oaths.html">The Three Oaths</a></li>
+          <li><a href="vayoel-moshe.html">Vayoel Moshe</a></li>
+          <li><a href="voices-of-the-gedolim.html">Voices of the Gedolim</a></li>
+          <li><a href="timeline.html">Timeline of Opposition</a></li>
+          <li><a href="faq.html">Frequently Asked</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="press.html">Press &amp; Media</a></li>
+          <li><a href="voices.html">Voices</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="subscribe.html">Subscribe to Updates</a></li>
+          <li><a href="books.html">Books</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Follow &amp; Contact</h5>
+        <ul>
+          <li><a href="https://x.com/TorahJews">@TorahJews · 𝕏</a></li>
+          <li><a href="https://www.facebook.com/torahjews/">Facebook</a></li>
+          <li><a href="https://www.instagram.com/torahjews/">Instagram</a></li>
+          <li>183 Wilson Street, PMB 162 · Brooklyn, NY 11211</li>
+          <li><a href="tel:+17188417053">718-841-7053</a> · <a href="mailto:info@torahjews.org">info@torahjews.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2003–2026 Copyright Torah Jews · 501(c)(3)</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<div id="tweaks" aria-hidden="true">
+  <div class="t">Tweaks</div>
+  <div class="st">Design knobs</div>
+  <label>
+    <span class="lab">Accent <span class="val" id="v-acc">Burgundy</span></span>
+    <div class="swatches" id="acc">
+      <button data-acc="#26306B" style="background:#26306B" title="Navy"></button>
+      <button data-acc="#4A2216" style="background:#4A2216" title="Oxblood"></button>
+      <button data-acc="#8B2E1F" style="background:#8B2E1F" title="Brick"></button>
+      <button data-acc="#2B3A2E" style="background:#2B3A2E" title="Study green"></button>
+    </div>
+  </label>
+  <label>
+    <span class="lab">Feed density <span class="val" id="v-den">3 cols</span></span>
+    <input type="range" id="den" min="1" max="3" step="1" value="3" />
+  </label>
+  <label>
+    <span class="lab">Hero size <span class="val" id="v-scl">1.00×</span></span>
+    <input type="range" id="scl" min="0.8" max="1.2" step="0.01" value="1.0" />
+  </label>
+</div>
+
+<script>
+  const DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#8B2E1F",
+    "feedCols": 3,
+    "heroScale": 1.2
+  }/*EDITMODE-END*/;
+
+  function applyAccent(hex) {
+    document.documentElement.style.setProperty("--burgundy", hex);
+    const names = {"#26306B":"Navy","#4A2216":"Oxblood","#8B2E1F":"Brick","#2B3A2E":"Study green"};
+    document.getElementById("v-acc").textContent = names[hex] || hex;
+    document.querySelectorAll("#acc button").forEach(b=>b.classList.toggle("on", b.dataset.acc===hex));
+  }
+  function applyFeedCols(n) {
+    const g = document.querySelector(".feed-grid");
+    if (!g) return;
+    g.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
+    document.getElementById("v-den").textContent = n + (n===1?" col":" cols");
+    document.getElementById("den").value = n;
+  }
+  function applyScale(x) {
+    document.querySelector(".hero h1").style.fontSize = `clamp(${34*x}px, ${6.2*x}vw, ${76*x}px)`;
+    document.getElementById("v-scl").textContent = Number(x).toFixed(2)+"×";
+    document.getElementById("scl").value = x;
+  }
+
+  applyAccent(DEFAULTS.accent);
+  applyFeedCols(DEFAULTS.feedCols);
+  applyScale(DEFAULTS.heroScale);
+
+  // Mobile menu
+  const mt = document.getElementById("mt");
+  const mm = document.getElementById("mobile-menu");
+  mt.addEventListener("click", ()=>mm.classList.toggle("open"));
+  mm.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=>mm.classList.remove("open")));
+
+  // Duplicate ticker items for seamless loop
+  const tr = document.getElementById("ticker-run");
+  if (tr) tr.innerHTML = tr.innerHTML + tr.innerHTML;
+
+  // Tweaks
+  const panel = document.getElementById("tweaks");
+  window.addEventListener("message", (e)=>{
+    const d = e.data || {};
+    if (d.type === "__activate_edit_mode") { panel.classList.add("on"); panel.setAttribute("aria-hidden","false"); }
+    if (d.type === "__deactivate_edit_mode") { panel.classList.remove("on"); panel.setAttribute("aria-hidden","true"); }
+  });
+  window.parent.postMessage({type:"__edit_mode_available"}, "*");
+
+  document.querySelectorAll("#acc button").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      applyAccent(b.dataset.acc);
+      window.parent.postMessage({type:"__edit_mode_set_keys", edits:{accent:b.dataset.acc}}, "*");
+    });
+  });
+  document.getElementById("den").addEventListener("input", (e)=>{
+    const v = parseInt(e.target.value,10);
+    applyFeedCols(v);
+    window.parent.postMessage({type:"__edit_mode_set_keys", edits:{feedCols:v}}, "*");
+  });
+  document.getElementById("scl").addEventListener("input", (e)=>{
+    const v = parseFloat(e.target.value);
+    applyScale(v);
+    window.parent.postMessage({type:"__edit_mode_set_keys", edits:{heroScale:v}}, "*");
+  });
+</script>
+
+</body>
+</html>

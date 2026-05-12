@@ -1,0 +1,407 @@
+/* ============================================================
+   Torah Jews — Mobile-first styles
+   Dedicated mobile design. Viewport: 390px (iPhone 14/15).
+   ============================================================ */
+
+:root {
+  --bg:        #F5F1E8;
+  --bg-deep:   #EDE7D7;
+  --ink:       #141414;
+  --ink-soft:  #2A2723;
+  --muted:     #6B6158;
+  --rule:      #D4CFC3;
+  --rule-soft: #E3DCCB;
+  --navy:      #26306B;
+  --navy-deep: #1A2050;
+  --red:       #D33038;
+  --red-deep:  #A8212A;
+  --gold:      #6b5a2e;
+  --gold-soft: #8a7a4c;
+  --parchment: #fbf8f0;
+  /* Desktop aliases — keep in sync with TorahJews Homepage.html.
+     Desktop applies `applyAccent("#8B2E1F")` on load which overrides --burgundy. */
+  --burgundy:  #8B2E1F;
+  --brick:     var(--red);
+  --dark:      var(--navy-deep);
+
+  --serif: "Source Serif 4", Georgia, serif;
+  --hebrew: "Frank Ruhl Libre", Georgia, serif;
+  --ui: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--ui);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Announcement (INLINE, not sticky) ---------- */
+.m-announce {
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 18px;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+.m-announce b { display: block; font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+
+/* ---------- Compact ticker ---------- */
+.m-ticker {
+  background: #8B2E1F;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-family: var(--ui);
+  font-size: 11px;
+}
+.m-ticker-label {
+  flex: 0 0 auto;
+  background: #6E2416;
+  color: #FFD262;
+  padding: 8px 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+.m-ticker-dot {
+  width: 6px; height: 6px; background: #FFD262; border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255,210,98,0.3);
+  animation: mtick 1.6s ease-in-out infinite;
+}
+@keyframes mtick { 0%,100%{box-shadow:0 0 0 2px rgba(255,210,98,0.3);} 50%{box-shadow:0 0 0 5px rgba(255,210,98,0.05);} }
+.m-ticker-track { flex: 1; overflow: hidden; position: relative; }
+.m-ticker-run {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: mtickrun 38s linear infinite;
+  padding-left: 14px;
+}
+.m-ticker-item { padding-right: 28px; }
+.m-ticker-item b { color: #FFD262; margin-right: 6px; font-weight: 700; }
+@keyframes mtickrun { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ---------- Top nav ---------- */
+.m-nav {
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 40;
+}
+.m-brand { display: flex; align-items: center; gap: 10px; }
+.m-brand-mark {
+  width: 50px; height: 50px;
+  background: url('assets/torahjews-logo.png') center/contain no-repeat;
+  flex: 0 0 50px;
+}
+.m-brand-txt { line-height: 1; display: flex; align-items: center; }
+.m-brand-txt .wm { font-family: var(--serif); font-weight: 700; font-size: 26px; color: var(--navy); letter-spacing: -0.02em; transform: translateY(-2px); display: inline-block; }
+.m-brand-txt .sb { display: none; }
+.m-brand-txt br { display: none; }
+.m-burger {
+  width: 38px; height: 38px; border: 1px solid var(--rule);
+  background: transparent; border-radius: 8px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  cursor: pointer; padding: 0;
+}
+.m-burger span { display: block; width: 16px; height: 1.5px; background: var(--ink); }
+
+/* ---------- Full-screen nav overlay ---------- */
+.m-menu {
+  position: fixed; inset: 0; background: var(--bg); z-index: 100;
+  display: none; flex-direction: column;
+  animation: mfade 0.2s ease;
+}
+.m-menu.open { display: flex; }
+@keyframes mfade { from{opacity:0;} to{opacity:1;} }
+.m-menu-top { padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--rule); }
+.m-menu-close { background: none; border: 0; font-size: 24px; cursor: pointer; color: var(--ink); padding: 4px 8px; }
+.m-menu-list { flex: 1; padding: 32px 24px; display: flex; flex-direction: column; gap: 0; }
+.m-menu-list a {
+  font-family: var(--serif); font-size: 32px; font-weight: 500;
+  letter-spacing: -0.02em; color: var(--ink);
+  padding: 18px 0; border-bottom: 1px solid var(--rule-soft);
+}
+.m-menu-list a em { color: var(--burgundy); font-style: italic; }
+.m-menu-foot { padding: 24px; background: var(--navy); color: #fff; }
+.m-menu-foot .cta {
+  display: block; background: var(--red-deep); color: #fff;
+  padding: 16px; text-align: center;
+  font-family: var(--ui); font-weight: 600; font-size: 13px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  border-radius: 4px;
+}
+.m-menu-foot .mt { font-family: var(--ui); font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 14px; text-align: center; letter-spacing: 0.1em; }
+
+/* ---------- Section primitives ---------- */
+.m-sec { padding: 40px 22px; border-bottom: 1px solid var(--rule); }
+.m-sec.tight { padding: 28px 22px; }
+.m-sec.parchment { background: var(--parchment); }
+.m-sec.navy { background: var(--navy); color: #fff; border-bottom: 0; }
+.m-sec.navy h2, .m-sec.navy h3 { color: #fff; }
+.m-sec.navy .m-kick { color: #FFD262; }
+
+.m-kick {
+  font-family: var(--ui); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 14px;
+}
+.m-sec h1 {
+  font-family: var(--serif); font-weight: 700;
+  font-size: 54px; line-height: 0.96; letter-spacing: -0.035em;
+  margin: 0 0 22px; color: var(--ink); text-wrap: balance;
+}
+.m-sec h1 em { font-style: italic; color: var(--burgundy); font-weight: 700; }
+.m-sec.hero-big .m-kick { color: var(--burgundy); display: inline-flex; align-items: center; gap: 10px; }
+.m-sec.hero-big .m-kick::before { content: ""; width: 28px; height: 3px; background: var(--burgundy); display: inline-block; }
+.m-sec.hero-big .dek { border-left: 3px solid var(--burgundy); padding-left: 16px; font-size: 17px; line-height: 1.5; color: var(--ink-soft); }
+.m-sec h2 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 28px; line-height: 1.08; letter-spacing: -0.015em;
+  margin: 0 0 12px; color: var(--ink); text-wrap: pretty;
+}
+.m-sec h2 em { font-style: italic; color: var(--burgundy); font-weight: 700; }
+.m-sec h3 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 20px; line-height: 1.2; margin: 0 0 10px;
+}
+.m-sec .dek {
+  font-family: var(--serif); font-size: 17px; line-height: 1.5;
+  color: var(--ink-soft); margin: 0;
+}
+.m-sec p { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 14px; }
+.m-sec p.lead::first-letter {
+  font-family: var(--hebrew); font-size: 52px; line-height: 0.9;
+  float: left; padding: 4px 10px 0 0; color: var(--burgundy); font-weight: 500;
+}
+
+/* ---------- Buttons ---------- */
+.m-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 15px 22px; font-family: var(--ui); font-size: 12px;
+  font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  border-radius: 4px; width: 100%;
+}
+.m-btn.primary { background: var(--ink); color: #fff; }
+.m-btn.x { background: #000; color: #fff; }
+.m-btn.x::before { content: "𝕏"; font-size: 16px; letter-spacing: 0; text-transform: none; font-weight: 700; }
+.m-btn.red { background: var(--red-deep); color: #fff; }
+.m-btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.m-btn.gold { background: var(--gold); color: #fff; }
+
+/* ---------- X feed card ---------- */
+.m-xfeed { background: #000; color: #fff; padding: 26px 22px 30px; }
+.m-xfeed-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.m-xfeed-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: url('assets/torahjews-logo.png') center/cover no-repeat, #fff;
+  background-color: #fff;
+  flex: 0 0 48px; border: 1px solid rgba(255,255,255,0.15);
+}
+.m-xfeed-name { font-weight: 700; font-size: 15px; font-family: var(--ui); }
+.m-xfeed-handle { font-size: 13px; color: rgba(255,255,255,0.5); font-family: var(--ui); }
+.m-xfeed-verified { display: inline-block; width: 15px; height: 15px; margin-left: 4px; vertical-align: -2px; background: #1d9bf0; border-radius: 50%; position: relative; }
+.m-xfeed-verified::after { content:"✓"; position: absolute; inset: 0; font-size: 10px; font-weight: 900; color: #000; display: flex; align-items: center; justify-content: center; }
+.m-xpost {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 0;
+}
+.m-xpost:last-child { border-bottom: 0; }
+.m-xpost .t { font-family: var(--ui); font-size: 14px; line-height: 1.45; color: #e7e9ea; }
+.m-xpost .t b { color: #fff; font-weight: 600; }
+.m-xpost .meta { font-family: var(--ui); font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; display: flex; gap: 18px; }
+.m-xpost .meta span::before { margin-right: 4px; opacity: 0.7; }
+.m-xfeed-follow {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #fff; color: #000;
+  padding: 14px; margin-top: 18px; border-radius: 999px;
+  font-family: var(--ui); font-weight: 700; font-size: 14px;
+}
+.m-xfeed-follow::before { content: "𝕏"; font-size: 18px; font-weight: 900; }
+
+/* ---------- Rabbi cards (single col) ---------- */
+.m-rabbi {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.m-rabbi:last-child { border-bottom: 0; }
+.m-rabbi-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+.m-rabbi-portrait {
+  width: 78px; height: 104px; flex: 0 0 78px;
+  background: linear-gradient(155deg, #2A2420 0%, #0F0C0A 100%);
+  border: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+}
+.m-rabbi-portrait::before { content:""; position: absolute; inset: 5px; border: 1px solid rgba(255,210,98,0.28); pointer-events: none; z-index: 2; }
+/* Reusable silhouette SVG embedded as a background-image */
+.m-rabbi-portrait::after,
+.m-monument-portrait::after,
+.m-portrait-hero::after {
+  content:""; position: absolute; left: 0; right: 0; bottom: 0;
+  background-repeat: no-repeat; background-position: center bottom;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 260'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23FFC95C' stop-opacity='0.95'/><stop offset='1' stop-color='%238B6F2A' stop-opacity='0.55'/></linearGradient></defs><path fill='url(%23g)' d='M100 30c-22 0-40 22-40 50 0 16 6 30 14 38-18 8-34 24-40 50-4 16-4 34-4 54v38h140v-38c0-20 0-38-4-54-6-26-22-42-40-50 8-8 14-22 14-38 0-28-18-50-40-50z'/></svg>");
+  background-size: contain;
+}
+.m-rabbi-portrait::after { height: 78%; top: 22%; }
+.m-monument-portrait::after { height: 78%; top: 22%; }
+.m-portrait-hero::after { height: 80%; top: 20%; }
+.m-rabbi-portrait .ph-tag {
+  position: absolute; top: 6px; right: 6px; z-index: 3;
+  font-family: var(--ui); font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,210,98,0.7); font-weight: 700;
+}
+
+/* ---------- Monument portrait (Home) ---------- */
+.m-monument-portrait {
+  width: 124px; height: 164px; margin: 0 auto 22px;
+  background: linear-gradient(155deg, #1A1410 0%, #000 100%);
+  border: 1px solid rgba(255,210,98,0.35);
+  position: relative; overflow: hidden;
+}
+.m-monument-portrait::before { content:""; position: absolute; inset: 8px; border: 1px solid rgba(255,210,98,0.4); pointer-events: none; z-index: 2; }
+.m-monument-portrait .ph-tag {
+  position: absolute; top: 10px; right: 10px; z-index: 3;
+  font-family: var(--ui); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,210,98,0.65); font-weight: 700;
+}
+
+/* ---------- About hero portrait ---------- */
+.m-portrait-hero {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(155deg, #2A2420 0%, #0F0C0A 100%);
+  border: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+  margin: 18px 0 24px;
+}
+.m-portrait-hero::before { content:""; position: absolute; inset: 12px; border: 1px solid rgba(255,210,98,0.25); pointer-events: none; z-index: 2; }
+.m-portrait-hero .corner { position: absolute; top: 14px; left: 14px; z-index: 3; font-family: var(--serif); font-style: italic; color: #FFC95C; font-size: 13px; letter-spacing: 0.04em; }
+.m-portrait-hero .ph-tag { position: absolute; top: 14px; right: 14px; z-index: 3; font-family: var(--ui); font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,210,98,0.55); font-weight: 700; }
+.m-portrait-hero .plate {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  padding: 36px 16px 14px; text-align: center;
+}
+.m-portrait-hero .plate .nm { font-family: var(--serif); font-size: 18px; font-weight: 600; color: #fff; }
+.m-portrait-hero .plate .dt { font-family: var(--ui); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #FFC95C; margin-top: 4px; font-weight: 600; }
+.m-rabbi-name { font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--ink); margin-bottom: 4px; }
+.m-rabbi-dates { font-family: var(--ui); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--burgundy); }
+.m-rabbi-quote {
+  font-family: var(--serif); font-size: 15px; line-height: 1.55;
+  color: var(--ink-soft); border-left: 2px solid var(--burgundy); padding-left: 14px;
+}
+.m-rabbi-quote em { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--burgundy); margin-top: 10px; font-style: normal; }
+
+/* ---------- Press list ---------- */
+.m-press { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.m-press:last-child { border-bottom: 0; }
+.m-press .tag { font-family: var(--ui); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--burgundy); font-weight: 700; }
+.m-press .d { font-family: var(--ui); font-size: 11px; color: var(--muted); margin: 4px 0 8px; }
+.m-press .h { font-family: var(--serif); font-size: 17px; line-height: 1.3; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.m-press .dek { font-family: var(--serif); font-size: 14px; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.m-footer { background: #1a1a1a; color: rgba(255,255,255,0.7); padding: 40px 22px 28px; }
+.m-footer h5 { font-family: var(--ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #FFD262; margin: 0 0 12px; font-weight: 700; }
+.m-footer .brand-lg { font-family: var(--serif); font-size: 22px; color: #fff; font-weight: 600; margin-bottom: 10px; }
+.m-footer .brand-lg em { color: var(--gold-soft); font-style: italic; }
+.m-footer .blurb { font-family: var(--serif); font-size: 14px; line-height: 1.55; margin-bottom: 28px; }
+.m-footer .blurb b { color: #fff; }
+.m-footer .col { margin-bottom: 24px; }
+.m-footer ul { list-style: none; margin: 0; padding: 0; }
+.m-footer li { font-size: 14px; padding: 6px 0; }
+.m-footer li a { color: rgba(255,255,255,0.75); }
+.m-footer .legal { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; }
+.m-footer .legal span { display: block; margin-bottom: 4px; }
+
+/* ---------- CTA trio (stacked) ---------- */
+.m-cta { padding: 24px 0; border-top: 1px solid var(--rule); }
+.m-cta:first-child { border-top: 0; padding-top: 0; }
+.m-cta .n { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--burgundy); }
+.m-cta h4 { font-family: var(--serif); font-size: 22px; font-weight: 500; margin: 6px 0 10px; letter-spacing: -0.01em; }
+.m-cta p { font-family: var(--serif); font-size: 15px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 14px; }
+
+/* ---------- Quote block ---------- */
+.m-pullquote {
+  font-family: var(--serif); font-size: 22px; line-height: 1.35;
+  font-style: italic; color: var(--ink); letter-spacing: -0.01em;
+  padding: 28px 0 20px; border-top: 2px solid var(--ink); margin: 24px 0;
+}
+.m-pullquote .attrib { display: block; font-style: normal; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--burgundy); margin-top: 16px; font-family: var(--ui); font-weight: 700; }
+
+/* ---------- Section head numbering ---------- */
+.m-num { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--burgundy); margin-bottom: 6px; }
+
+/* ---------- Ledger (Judaism vs Zionism) ---------- */
+.m-ledger { margin: 18px 0 8px; }
+.m-ledger-head { display: grid; grid-template-columns: 1fr 36px 1fr; gap: 10px; align-items: end; margin-bottom: 14px; }
+.m-ledger-side { text-align: center; }
+.m-ledger-side .stamp { font-family: var(--ui); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; line-height: 1.3; }
+.m-ledger-side .stamp b { color: var(--ink); }
+.m-ledger-side h3 { font-family: var(--serif); font-size: 26px; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+.m-ledger-side.j h3 { color: var(--navy); }
+.m-ledger-side.z h3 { color: var(--red-deep); }
+.m-ledger-side .age { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--muted); margin-top: 4px; }
+.m-ledger-vs { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--burgundy); text-align: center; padding-bottom: 8px; }
+.m-ledger-row { border-top: 1px solid var(--rule); padding: 16px 0; }
+.m-ledger-row:last-child { border-bottom: 1px solid var(--rule); }
+.m-ledger-label { font-family: var(--ui); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--burgundy); font-weight: 700; margin-bottom: 10px; text-align: center; }
+.m-ledger-cell { font-family: var(--serif); font-size: 14px; line-height: 1.5; padding: 12px 14px; border-left: 2px solid; }
+.m-ledger-cell.j { border-color: var(--navy); background: rgba(38,48,107,0.04); margin-bottom: 8px; }
+.m-ledger-cell.j strong { color: var(--navy); }
+.m-ledger-cell.z { border-color: var(--red-deep); background: rgba(211,48,56,0.04); }
+.m-ledger-cell em { color: var(--burgundy); font-style: italic; font-weight: 600; }
+.m-ledger-cell .who { font-family: var(--ui); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+.m-ledger-cell.j .who { color: var(--navy); }
+.m-ledger-cell.z .who { color: var(--red-deep); }
+
+/* ---------- Monument quote (Satmar Rebbe) ---------- */
+.m-monument { background: var(--navy-deep); color: #fff; padding: 48px 22px; text-align: center; border-bottom: 0; position: relative; overflow: hidden; }
+.m-monument::before { content:""; position: absolute; inset: 18px; border: 1px solid rgba(255,210,98,0.25); pointer-events: none; }
+.m-monument .kicker { font-family: var(--ui); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #FFD262; margin-bottom: 22px; }
+.m-monument blockquote { font-family: var(--serif); font-size: 22px; line-height: 1.35; font-style: italic; color: #fff; margin: 0 0 22px; letter-spacing: -0.01em; }
+.m-monument blockquote .q { font-family: var(--serif); font-style: normal; font-size: 56px; line-height: 0; color: #FFD262; display: inline-block; transform: translateY(18px); margin-right: 4px; }
+.m-monument .attrib { font-family: var(--ui); font-size: 11px; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); line-height: 1.6; }
+.m-monument .attrib b { color: #FFD262; display: block; margin-bottom: 4px; letter-spacing: 0.14em; }
+
+/* ---------- X tweet card (richer, matching desktop) ---------- */
+.m-tweet { background: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.m-xfeed .m-tweet { border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
+.m-tweet-who { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.m-tweet-av { width: 36px; height: 36px; border-radius: 50%; background: url('assets/torahjews-logo.png') center/cover no-repeat #fff; flex: 0 0 36px; border: 1px solid rgba(255,255,255,0.1); }
+.m-tweet-nm { font-family: var(--ui); font-size: 13px; font-weight: 700; color: #fff; }
+.m-tweet-nm .v { display: inline-block; width: 14px; height: 14px; background: #1d9bf0; border-radius: 50%; text-align: center; color: #000; font-size: 9px; font-weight: 900; line-height: 14px; margin-left: 3px; vertical-align: 1px; }
+.m-tweet-hn { font-family: var(--ui); font-size: 11px; color: rgba(255,255,255,0.5); }
+.m-tweet-body { font-family: var(--ui); font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.92); margin-bottom: 10px; }
+.m-tweet-body b { color: #fff; font-weight: 600; }
+.m-tweet-body em { font-style: italic; color: #FFD262; }
+.m-tweet-chip { display: inline-block; font-family: var(--ui); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #FFD262; background: rgba(255,210,98,0.1); border: 1px solid rgba(255,210,98,0.3); padding: 3px 8px; border-radius: 3px; font-weight: 700; margin-bottom: 8px; }
+.m-tweet-meta { font-family: var(--ui); font-size: 11px; color: rgba(255,255,255,0.45); display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; }
+
+/* Social stats row */
+.m-socials { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 16px 0 20px; }
+.m-soc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 12px 6px; text-align: center; }
+.m-soc .g { font-family: var(--serif); font-style: italic; font-size: 18px; color: #FFD262; font-weight: 700; }
+.m-soc .l { font-family: var(--ui); font-size: 9px; color: rgba(255,255,255,0.6); margin-top: 3px; letter-spacing: 0.04em; }
+
+.m-xfeed .xf-headline { font-family: var(--serif); font-size: 22px; line-height: 1.3; font-weight: 500; color: #fff; margin: 8px 0 18px; letter-spacing: -0.01em; }
+.m-xfeed .xf-headline em { color: #FFD262; font-style: italic; }
+
+/* ---------- Utility ---------- */
+.mb-14 { margin-bottom: 14px; }
+.mb-24 { margin-bottom: 24px; }
+.mt-16 { margin-top: 16px; }
+.stack > * + * { margin-top: 12px; }

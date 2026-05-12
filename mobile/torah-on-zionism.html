@@ -1,0 +1,260 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" />
+<meta name="viewport" content="width=390, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,ital,wght@8..60,0,400..700;8..60,1,400..700&family=Frank+Ruhl+Libre:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mobile.css?v=1777053788693">
+<title>Torah on Zionism — Mobile</title>
+<style>
+  /* Page-local: mobile chapter browser — burgundy rail + expandable cards */
+  :root { --burgundy: #7A1E1E; --burgundy-deep: #5A1414; }
+
+  .tz-hero { background: var(--bg); padding: 38px 22px 28px; border-bottom: 1px solid var(--rule); }
+  .tz-hero .eye { font-family: var(--ui); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--burgundy); font-weight: 700; margin-bottom: 14px; }
+  .tz-hero h1 { font-family: var(--serif); font-weight: 700; font-size: 38px; line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 18px; color: var(--ink); }
+  .tz-hero h1 em { font-style: italic; color: var(--burgundy); }
+  .tz-hero .lede { font-family: var(--serif); font-size: 16px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+  .tz-hero .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--rule); }
+  .tz-hero .meta > div { font-family: var(--ui); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .tz-hero .meta b { display: block; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink); letter-spacing: -0.01em; text-transform: none; font-weight: 700; margin-top: 4px; }
+
+  /* Rail + chapters */
+  .tz-stream { position: relative; padding: 28px 0 40px; background: var(--bg-deep); }
+  .tz-stream::before { content:""; position: absolute; left: 36px; top: 12px; bottom: 12px; width: 2px; background: var(--burgundy); opacity: 0.25; }
+
+  .tz-chapter { position: relative; padding: 0 22px 0 64px; margin-bottom: 18px; }
+  .tz-chapter .node {
+    position: absolute; left: 24px; top: 10px; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--bg-deep); border: 2px solid var(--burgundy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--burgundy);
+    font-weight: 700; z-index: 2; transition: all 0.3s;
+  }
+  .tz-chapter.open .node { background: var(--burgundy); color: #fff; transform: scale(1.12); }
+
+  .tz-card { background: var(--bg); border: 1px solid var(--rule); transition: background 0.25s, border-color 0.25s, box-shadow 0.25s; }
+  .tz-chapter.open .tz-card { background: #fff; border-color: var(--ink); box-shadow: 0 12px 28px -18px rgba(0,0,0,0.25); }
+
+  .tz-head { padding: 18px 20px; cursor: pointer; user-select: none; display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; }
+  .tz-head .k { font-family: var(--serif); font-style: italic; color: var(--burgundy); font-size: 12px; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.02em; }
+  .tz-head h3 { font-family: var(--serif); font-weight: 700; font-size: 22px; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 8px; color: var(--ink); }
+  .tz-head .preview { font-family: var(--serif); font-size: 14px; line-height: 1.45; color: var(--ink-soft); margin: 0; }
+  .tz-head .tag { font-family: var(--ui); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 10px; line-height: 1.4; }
+  .tz-head .tag b { color: var(--burgundy); }
+  .tz-head .toggle {
+    width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule);
+    background: var(--bg-deep); display: flex; align-items: center; justify-content: center;
+    font-size: 17px; color: var(--burgundy); font-weight: 300; flex: 0 0 34px;
+    transition: all 0.3s;
+  }
+  .tz-chapter.open .tz-head .toggle { background: var(--burgundy); color: #fff; border-color: var(--burgundy); transform: rotate(45deg); }
+
+  .tz-body { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.2,0.8,0.2,1); }
+  .tz-chapter.open .tz-body { max-height: 1400px; }
+  .tz-body-inner { padding: 18px 20px 22px; border-top: 1px solid var(--rule); font-family: var(--serif); font-size: 14px; line-height: 1.55; color: var(--ink-soft); }
+  .tz-body-inner p { margin: 0 0 12px; }
+  .tz-body-inner p:last-child { margin-bottom: 0; }
+  .tz-body-inner b { color: var(--ink); }
+  .tz-body-inner em { color: var(--burgundy); font-style: italic; }
+
+  .tz-body-inner .pull {
+    border-left: 3px solid var(--burgundy); padding: 10px 0 10px 14px; margin: 14px 0;
+    font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.4; color: var(--ink);
+  }
+  .tz-body-inner .pull cite { display: block; font-style: normal; font-family: var(--ui); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 8px; font-weight: 600; }
+
+  .tz-body-inner .read-on { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 16px; border: 1px solid var(--burgundy); color: var(--burgundy); font-family: var(--ui); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; text-decoration: none; }
+
+  /* End footer on this page */
+  .tz-outro { background: var(--navy); color: #fff; padding: 38px 22px; text-align: center; }
+  .tz-outro h4 { font-family: var(--serif); font-size: 22px; line-height: 1.2; margin: 0 0 10px; color: #fff; }
+  .tz-outro h4 em { color: #FFD262; font-style: italic; }
+  .tz-outro p { font-family: var(--serif); font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.85); margin: 0 0 18px; }
+  .tz-outro .btn { display: inline-block; background: #FFD262; color: #1A2050; padding: 12px 20px; font-family: var(--ui); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="m-announce"><b>The State of Israel does NOT represent Judaism</b> or the Jewish People.</div>
+<div class="m-ticker"><div class="m-ticker-label"><span class="m-ticker-dot"></span>Breaking</div><div class="m-ticker-track"><div class="m-ticker-run" id="mticker">
+  <span class="m-ticker-item"><b>Apr 12</b> Rabbi Katz statement on Rafie Nia Synagogue</span>
+  <span class="m-ticker-item"><b>Apr 7</b> Torah Jews condemns Golders Green attack</span>
+  <span class="m-ticker-item"><b>Mar 24</b> Statement on Jerusalem escalation</span>
+</div></div></div>
+
+<nav class="m-nav">
+  <a class="m-brand" href="index.html"><span class="m-brand-mark"></span><span class="m-brand-txt"><span class="wm">Torah Jews</span><br><span class="sb">Natruna · Est. 2003</span></span></a>
+  <button class="m-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="m-menu" id="menu">
+  <div class="m-menu-top"><span style="font-family:var(--ui);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);">Menu</span><button class="m-menu-close" id="menuClose">✕</button></div>
+  <nav class="m-menu-list">
+    <a href="index.html"><em>i.</em> Home</a>
+    <a href="about.html"><em>ii.</em> About</a>
+    <a href="torah-on-zionism.html"><em>iii.</em> Torah on Zionism</a>
+    <a href="rabbinical-quotations.html"><em>iv.</em> Rabbinical Quotations</a>
+    <a href="support.html"><em>v.</em> Support</a>
+  </nav>
+  <div class="m-menu-foot"><a class="cta" href="https://x.com/TorahJews">Follow @TorahJews on 𝕏</a><div class="mt">183 Wilson Street, Brooklyn NY · info@torahjews.org</div></div>
+</div>
+
+<section class="tz-hero">
+  <div class="eye">§ The Torah position · Five chapters</div>
+  <h1>What the <em>Torah</em> actually says about Zionism.</h1>
+  <p class="lede">Five chapters. The Talmudic foundation, the Satmar Rebbe's definitive 1961 treatise, the chorus of gedolim, the historical record, and the questions the press keeps asking — with answers.</p>
+  <div class="meta">
+    <div>Length<b>~44 min</b></div>
+    <div>Authorities<b>10+ gedolim</b></div>
+  </div>
+</section>
+
+<div class="tz-stream">
+
+  <!-- Part I -->
+  <article class="tz-chapter" id="c1">
+    <div class="node">i</div>
+    <div class="tz-card">
+      <div class="tz-head">
+        <div>
+          <div class="k">Part I · The Talmudic foundation</div>
+          <h3>The Three Oaths.</h3>
+          <p class="preview">Before sending the Jewish people into exile, G-d made them swear three oaths governing their conduct through diaspora. The first two forbid what Zionism does.</p>
+          <div class="tag"><b>Kesubos 111a</b> · 8 min · Rashi · Rambam · Maharal</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="tz-body"><div class="tz-body-inner">
+        <p>The Talmud (Kesubos 111a) records that Hashem imposed three oaths on the Jewish people in exile. These oaths are not optional pieties — they are binding halachic obligations cited by every major authority from the Rambam forward.</p>
+        <div class="pull">"That Jews shall not ascend to the Land en masse as a political movement, and that Jews shall not rebel against the nations of the world."<cite>Kesubos 111a · Oaths 1 & 2</cite></div>
+        <p>The Zionist state was established in <em>direct contradiction</em> of the first two oaths. This is not a fringe interpretation — it is the plain reading cited by the Rambam, the Ramban, the Maharal, and every major posek through the 20th century.</p>
+        <a class="read-on" href="three-oaths.html">Read chapter →</a>
+      </div></div>
+    </div>
+  </article>
+
+  <!-- Part II -->
+  <article class="tz-chapter" id="c2">
+    <div class="node">ii</div>
+    <div class="tz-card">
+      <div class="tz-head">
+        <div>
+          <div class="k">Part II · The magnum opus</div>
+          <h3>Vayoel Moshe.</h3>
+          <p class="preview">The Satmar Rebbe's 1961 three-treatise work — the canonical halachic case against Zionism. Still taught, still distributed, still unanswered.</p>
+          <div class="tag"><b>Published 1959–1961</b> · 14 min · Three treatises</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="tz-body"><div class="tz-body-inner">
+        <p><b>Vayoel Moshe</b> is the Satmar Rebbe's systematic halachic response to the Zionist claim that establishing the State of Israel was religiously permitted — even religiously praiseworthy.</p>
+        <p>Across three major essays — on the Three Oaths, on the prohibition of settling the Land by force, and on the Hebrew language — the Rebbe lays out the sources from Talmud, Rishonim, and Acharonim with total textual rigor.</p>
+        <div class="pull">"The Zionists, with all their deeds, have led the Jewish people into the greatest catastrophe since the destruction of the Second Temple."<cite>Satmar Rebbe · Vayoel Moshe</cite></div>
+        <p>The work has <em>never been seriously refuted</em> on its own terms.</p>
+        <a class="read-on" href="vayoel-moshe.html">About the book →</a>
+      </div></div>
+    </div>
+  </article>
+
+  <!-- Part III -->
+  <article class="tz-chapter" id="c3">
+    <div class="node">iii</div>
+    <div class="tz-card">
+      <div class="tz-head">
+        <div>
+          <div class="k">Part III · The chorus of voices</div>
+          <h3>Voices of the Gedolim.</h3>
+          <p class="preview">Zionism was never opposed by one man. It was opposed by the entire mainstream of European Torah leadership — across every tradition.</p>
+          <div class="tag"><b>10 authorities cited</b> · 11 min · Published works</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="tz-body"><div class="tz-body-inner">
+        <p>From the first Zionist Congress in 1897 through the present day, <b>every major Torah authority who addressed the question in writing condemned it.</b> Not "most." Not "many." All.</p>
+        <p>This includes figures as different as the Chofetz Chaim, Reb Chaim Brisker, the Chazon Ish, Rabbi Samson Raphael Hirsch, the Munkacser Rebbe, the earlier Lubavitcher Rebbes, and the Ben Ish Chai. The agreement across <em>Chasidic, Litvish, German-Orthodox, and Sephardi</em> traditions is itself halachically decisive.</p>
+        <a class="read-on" href="rabbinical-quotations.html">See the quotations →</a>
+      </div></div>
+    </div>
+  </article>
+
+  <!-- Part IV -->
+  <article class="tz-chapter" id="c4">
+    <div class="node">iv</div>
+    <div class="tz-card">
+      <div class="tz-head">
+        <div>
+          <div class="k">Part IV · The historical record</div>
+          <h3>A timeline of opposition.</h3>
+          <p class="preview">From the First Zionist Congress in 1897 — when the rabbis walked out — to Kiryas Joel today. The chronology, event by event.</p>
+          <div class="tag"><b>15 dated events</b> · 6 min · 1897 → present</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="tz-body"><div class="tz-body-inner">
+        <p>Selected moments: <b>1897</b> — First Zionist Congress, rabbinic walkout. <b>1917</b> — Balfour Declaration, opposed by the Chief Rabbis of Jerusalem. <b>1938</b> — Munkacser Rebbe's final warnings. <b>1947</b> — UN partition vote, Agudath Israel of America opposes. <b>1959–1961</b> — <em>Vayoel Moshe</em> published. <b>1970s–present</b> — Neturei Karta, Satmar, and the broader Natruna community carry the position forward.</p>
+        <a class="read-on" href="timeline.html">Read the full timeline →</a>
+      </div></div>
+    </div>
+  </article>
+
+  <!-- Part V -->
+  <article class="tz-chapter" id="c5">
+    <div class="node">v</div>
+    <div class="tz-card">
+      <div class="tz-head">
+        <div>
+          <div class="k">Part V · The questions journalists keep asking</div>
+          <h3>Frequently asked.</h3>
+          <p class="preview">"Do all Jews support Israel?" "Isn't anti-Zionism antisemitism?" Direct answers to what the press asks most.</p>
+          <div class="tag"><b>8 common questions</b> · 5 min · Answers with sources</div>
+        </div>
+        <div class="toggle">+</div>
+      </div>
+      <div class="tz-body"><div class="tz-body-inner">
+        <p><b>"Do all Jews support Israel?"</b> — No. Hundreds of thousands of Torah-observant Jews, and the entire Torah tradition before 1948, reject political Zionism.</p>
+        <p><b>"Isn't anti-Zionism antisemitism?"</b> — The conflation is the Zionist movement's own rhetorical invention. Opposing a modern political state is not opposing the Jewish people — the <em>Torah itself</em> forbids what Zionism does.</p>
+        <p><b>"Aren't you just Neturei Karta?"</b> — Neturei Karta is one expression of the broader Natruna tradition. Torah Jews is a public-facing project of that wider community, founded in 2003 at the request of senior Satmar rabbis.</p>
+        <a class="read-on" href="faq.html">All questions →</a>
+      </div></div>
+    </div>
+  </article>
+
+</div>
+
+<section class="tz-outro">
+  <h4>Still have <em>questions</em>?</h4>
+  <p>These chapters are summaries. The full works — Vayoel Moshe, the collected quotations, the historical record — are published on this site in full.</p>
+  <a class="btn" href="rabbinical-quotations.html">See the quotations →</a>
+</section>
+
+<footer class="m-footer">
+  <div class="brand-lg">Torah Jews <em>· Natruna</em></div>
+  <div class="blurb">Carrying forward the voice of <b>Grand Rabbi Joel Teitelbaum of Satmar</b> (1887–1979).</div>
+  <div class="col"><h5>Contact</h5><ul>
+    <li><a href="https://x.com/TorahJews">@TorahJews · 𝕏</a></li>
+    <li>183 Wilson Street, PMB 162, Brooklyn NY 11211</li>
+    <li><a href="mailto:info@torahjews.org">info@torahjews.org</a></li>
+  </ul></div>
+  <div class="legal"><span>© 2003–2026 Torah Jews · 501(c)(3)</span></div>
+</footer>
+
+<script>
+(function(){
+  var tr=document.getElementById('mticker');
+  if(tr)tr.innerHTML=tr.innerHTML+tr.innerHTML;
+  var b=document.getElementById('burger'),m=document.getElementById('menu'),c=document.getElementById('menuClose');
+  if(b)b.onclick=function(){m.classList.add('open');};
+  if(c)c.onclick=function(){m.classList.remove('open');};
+  // Chapter expand
+  document.querySelectorAll('.tz-head').forEach(function(h){
+    h.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') return;
+      h.closest('.tz-chapter').classList.toggle('open');
+    });
+  });
+  // Open first chapter by default
+  var first = document.querySelector('.tz-chapter');
+  if (first) first.classList.add('open');
+})();
+</script>
+</body></html>

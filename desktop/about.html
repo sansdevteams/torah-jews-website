@@ -1,0 +1,521 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Frank+Ruhl+Libre:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared/site.css"><title>About — Torah Jews</title></head><body><!-- Breaking-news ticker (edit items below) -->
+<div class="ticker" role="region" aria-label="Breaking news">
+  <div class="ticker-inner">
+    <div class="ticker-label"><span class="ticker-dot" aria-hidden="true"></span>Breaking</div>
+    <div class="ticker-track">
+      <div class="ticker-run" id="ticker-run">
+        <span class="ticker-item"><b>Apr 12</b> Rabbi Moshe Dovid Katz issues official statement on the Rafie Nia Synagogue destruction</span>
+        <span class="ticker-item"><b>Apr 7</b> Torah Jews condemns the Golders Green Hatzalah ambulance attack unequivocally</span>
+        <span class="ticker-item"><b>Mar 24</b> Public statement issued following escalation in Jerusalem — full text on @TorahJews</span>
+        <span class="ticker-item"><b>Mar 12</b> Rabbi Katz addresses Yeshiva Chasan Sofer on the Three Oaths and current events</span>
+        <span class="ticker-item"><b>Feb 28</b> Central Rabbinical Congress reaffirms opposition to Zionist conscription of yeshiva students</span>
+        <span class="ticker-item"><b>Feb 14</b> New translation of Vayoel Moshe chapter on the Three Oaths released in French</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="announcement">
+  <b>The State of Israel does NOT represent Judaism</b> &nbsp;·&nbsp; or the Jewish People.
+</div>
+<nav class="primary">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true" style="background-image:url('assets/torahjews-logo.png');background-size:contain;background-position:center;background-repeat:no-repeat;width:68px;height:68px;display:inline-block;flex:0 0 68px;"></span>
+      <span>
+        <span class="wordmark">Torah Jews</span>
+        <span class="sub">Natruna · Est. 2003</span>
+      </span>
+    </a>
+    <ul>
+      <li><a class="navlink" href="index.html">Home</a></li>
+      <li><a class="navlink" href="about.html">About</a></li>
+      <li><a class="navlink" href="torah-on-zionism.html">Torah on Zionism</a></li>
+      <li><a class="navlink" href="rabbinical-quotations.html">Rabbinical Quotations</a></li>
+      <li><a class="navlink" href="support.html">Support</a></li>
+    </ul>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a class="cta-follow" href="support.html">Support Now</a>
+      <button class="mobile-toggle" id="mt" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="torah-on-zionism.html">Torah on Zionism</a>
+    <a href="rabbinical-quotations.html">Rabbinical Quotations</a>
+    <a href="support.html">Support</a>
+  </div>
+</nav>
+
+
+<main>
+<style>
+/* ============ About page ============ */
+.ab-wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+/* Hero with big portrait */
+.ab-hero{padding:72px 0 60px;border-bottom:1px solid var(--rule);}
+.ab-hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center;}
+@media (max-width:900px){.ab-hero-grid{grid-template-columns:1fr;gap:36px;}}
+.ab-hero .eye{font-family:var(--ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-bottom:16px;}
+.ab-hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-0.025em;margin:0 0 20px;}
+.ab-hero h1 em{font-style:italic;color:var(--burgundy);}
+.ab-hero .lede{font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink-soft);margin:0 0 32px;}
+.ab-hero .credits{display:flex;gap:32px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--rule);}
+.ab-hero .credits > div{font-family:var(--ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.ab-hero .credits b{display:block;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);letter-spacing:-0.01em;text-transform:none;font-weight:700;margin-top:4px;}
+
+/* Portrait placeholder — large hero */
+.portrait-hero{position:relative;aspect-ratio:3/4;background:linear-gradient(155deg,#2A2420 0%,#0F0C0A 100%);border:1px solid var(--rule);display:flex;align-items:flex-end;padding:0;overflow:hidden;}
+.portrait-hero::before{content:"";position:absolute;inset:14px;border:1px solid rgba(255,210,98,0.25);pointer-events:none;}
+.portrait-hero .silhouette{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:62%;opacity:0.45;}
+.portrait-hero .plate{position:relative;z-index:2;width:100%;padding:22px 26px;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,transparent 100%);color:#fff;}
+.portrait-hero .plate .nn{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:-0.01em;}
+.portrait-hero .plate .tt{font-family:var(--ui);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#FFC95C;font-weight:700;margin-top:6px;}
+.portrait-hero .corner{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--serif);font-style:italic;color:#FFC95C;font-size:13px;letter-spacing:.04em;}
+.portrait-hero .placeholder-tag{position:absolute;top:16px;right:16px;z-index:2;font-family:var(--ui);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,210,98,0.55);font-weight:600;border:1px solid rgba(255,210,98,0.3);padding:4px 8px;}
+
+/* Portrait SVG silhouette reusable */
+
+/* ================ Who we are / Who we are not ================ */
+.ab-identity{padding:80px 0;background:var(--bg-deep);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.ab-identity .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:40px;}
+.ab-identity .eye{font-family:var(--ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-bottom:12px;}
+.ab-identity h2{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-0.02em;margin:0;}
+.ab-identity h2 em{font-style:italic;color:var(--burgundy);}
+
+.id-toggle{display:inline-flex;background:#fff;border:2px solid var(--ink);padding:4px;font-family:var(--ui);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;}
+.id-toggle button{background:transparent;border:0;padding:11px 22px;cursor:pointer;color:var(--ink);letter-spacing:inherit;font-family:inherit;font-weight:inherit;font-size:inherit;position:relative;}
+.id-toggle button.on{background:var(--ink);color:#FFC95C;}
+
+.id-board{position:relative;}
+.id-face{}
+.id-face.hidden{display:none;}
+.id-face.shown{display:block;}
+
+.id-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--ink);background:var(--ink);}
+@media (max-width:1024px){.id-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){.id-grid{grid-template-columns:1fr;}}
+
+.id-tile{background:#fff;padding:26px 22px 24px;display:flex;flex-direction:column;gap:14px;min-height:220px;position:relative;}
+.id-tile .mark{width:40px;height:40px;border:1.5px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:18px;font-style:italic;}
+.id-face.are .id-tile{color:var(--burgundy);}
+.id-face.arent .id-tile{color:#2A1518;background:#FFFBF4;}
+.id-face.arent .id-tile::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--burgundy);}
+.id-tile h4{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.15;letter-spacing:-0.015em;margin:0;color:var(--ink);}
+.id-tile p{font-family:var(--serif);font-size:14.5px;line-height:1.5;color:var(--ink-soft);margin:0;}
+.id-tile .badge{position:absolute;top:14px;right:14px;font-family:var(--ui);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;}
+.id-face.are .id-tile .badge{color:var(--burgundy);}
+.id-face.arent .id-tile .badge{color:#8B2E1F;}
+
+/* ================ Satmar Rebbe biography ================ */
+.ab-bio{padding:80px 0;}
+.ab-bio-grid{display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:start;}
+@media (max-width:900px){.ab-bio-grid{grid-template-columns:1fr;gap:40px;}}
+
+.ab-bio-portrait{position:sticky;top:24px;}
+.ab-bio-portrait .frame{aspect-ratio:3/4;background:linear-gradient(155deg,#2A2420 0%,#0F0C0A 100%);position:relative;overflow:hidden;border:1px solid var(--rule);}
+.ab-bio-portrait .frame::before{content:"";position:absolute;inset:10px;border:1px solid rgba(255,210,98,0.22);pointer-events:none;}
+.ab-bio-portrait .frame .silhouette{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:72%;opacity:0.45;}
+.ab-bio-portrait .frame .tag{position:absolute;top:12px;right:12px;font-family:var(--ui);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,210,98,0.5);font-weight:700;border:1px solid rgba(255,210,98,0.25);padding:3px 6px;}
+.ab-bio-portrait .caption{padding:14px 0 0;}
+.ab-bio-portrait .caption .nn{font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:-0.01em;}
+.ab-bio-portrait .caption .dd{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:14px;margin-top:2px;}
+.ab-bio-portrait .caption .yy{font-family:var(--ui);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-top:8px;}
+
+.ab-bio .prose h2{font-family:var(--serif);font-weight:700;font-size:32px;line-height:1.15;letter-spacing:-0.015em;color:var(--ink);margin:0 0 20px;}
+.ab-bio .prose h2 em{font-style:italic;color:var(--burgundy);}
+.ab-bio .prose h3{font-family:var(--serif);font-weight:700;font-size:20px;margin:32px 0 10px;color:var(--ink);}
+.ab-bio .prose p{font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--ink-soft);margin:0 0 18px;}
+.ab-bio .prose p b{color:var(--ink);}
+.ab-bio .prose blockquote{border-left:3px solid var(--burgundy);padding:4px 0 4px 22px;margin:28px 0;font-size:19px;line-height:1.5;color:var(--ink);font-family:var(--serif);}
+.ab-bio .prose blockquote .src{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:10px;font-weight:600;font-family:var(--ui);}
+
+/* ================ Mission pull ================ */
+.ab-pull{background:var(--ink);color:#fff;padding:72px 0;}
+.ab-pull .eye{font-family:var(--ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#FFC95C;font-weight:700;margin-bottom:18px;}
+.ab-pull h2{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 20px;max-width:880px;}
+.ab-pull h2 em{font-style:italic;color:#FFC95C;}
+.ab-pull p{font-family:var(--serif);font-size:19px;line-height:1.55;color:rgba(255,255,255,0.78);max-width:780px;margin:0;}
+
+/* ================ Guidance + Endorsements ================ */
+.ab-guidance{padding:80px 0;}
+.ab-guidance .head{margin-bottom:36px;}
+.ab-guidance .eye{font-family:var(--ui);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-bottom:12px;}
+.ab-guidance h2{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 16px;}
+.ab-guidance h2 em{font-style:italic;color:var(--burgundy);}
+.ab-guidance .sub{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink-soft);max-width:780px;margin:0;}
+
+.g-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);margin:40px 0 0;flex-wrap:wrap;}
+.g-tabs button{background:transparent;border:0;padding:18px 0;margin-right:40px;font-family:var(--ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--muted);cursor:pointer;position:relative;transition:color .2s;}
+.g-tabs button.on{color:var(--ink);}
+.g-tabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--burgundy);}
+.g-tabs button .ct{font-family:var(--serif);font-style:italic;font-weight:700;color:var(--burgundy);font-size:13px;letter-spacing:0;text-transform:none;margin-left:6px;}
+
+.g-panel{display:none;padding-top:40px;}
+.g-panel.on{display:block;}
+
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+@media (max-width:1024px){.g-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:720px){.g-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.g-grid{grid-template-columns:1fr;}}
+
+.g-card{background:var(--bg);padding:0;overflow:hidden;position:relative;cursor:default;transition:background .25s;}
+.g-card:hover{background:#fff;}
+.g-portrait{aspect-ratio:4/5;background:linear-gradient(160deg,#1F1C18 0%,#0A0908 100%);position:relative;overflow:hidden;}
+.g-portrait::before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,210,98,0.18);pointer-events:none;}
+.g-portrait .silhouette{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:75%;opacity:0.4;}
+.g-portrait .tag{position:absolute;top:10px;left:10px;font-family:var(--ui);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,210,98,0.5);font-weight:700;}
+.g-portrait .num{position:absolute;top:10px;right:10px;font-family:var(--serif);font-style:italic;font-weight:700;color:#FFC95C;font-size:16px;}
+.g-portrait .role-chip{position:absolute;bottom:10px;left:10px;font-family:var(--ui);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#fff;font-weight:700;background:rgba(0,0,0,0.5);padding:4px 8px;backdrop-filter:blur(4px);}
+
+.g-meta{padding:18px 18px 20px;border-top:1px solid var(--rule);}
+.g-meta .nn{font-family:var(--serif);font-weight:700;font-size:16px;line-height:1.2;letter-spacing:-0.01em;margin:0 0 6px;}
+.g-meta .dd{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:13px;line-height:1.4;}
+.g-meta .yy{font-family:var(--ui);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-top:8px;}
+
+/* Footnote under guidance tabs */
+.g-footnote{margin-top:36px;padding:22px 28px;background:var(--bg-deep);border-left:4px solid var(--burgundy);}
+.g-footnote p{font-family:var(--serif);font-size:16px;line-height:1.55;color:var(--ink-soft);margin:0;font-style:italic;max-width:780px;}
+
+/* ================ Mission & stance ================ */
+.ab-mission{padding:80px 0;background:var(--bg-deep);border-top:1px solid var(--rule);}
+.ab-mission .prose{font-family:var(--serif);font-size:18px;line-height:1.65;color:var(--ink-soft);max-width:780px;}
+.ab-mission h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 16px;color:var(--ink);}
+.ab-mission h2 em{font-style:italic;color:var(--burgundy);}
+.ab-mission p{margin:0 0 18px;}
+.ab-mission p b{color:var(--ink);}
+</style>
+
+<!-- HERO -->
+<section class="ab-hero">
+  <div class="ab-wrap">
+    <div class="ab-hero-grid">
+      <div>
+        <div class="eye">About · Torah Jews · Natruna · Est. 2003</div>
+        <h1>We carry forward a voice that <em>did not begin</em> in 2003.</h1>
+        <p class="lede">It began in Sighet in 1887 — with a child named Yoel Teitelbaum, born into a dynasty that had already, for three generations, rejected the rising winds of political Zionism.</p>
+        <div class="credits">
+          <div>Founded<b>2003 · Brooklyn</b></div>
+          <div>Legal status<b>501(c)(3)</b></div>
+          <div>Endorsed by<b>12 authorities</b></div>
+          <div>Guided by<b>The Satmar Rebbe</b></div>
+        </div>
+      </div>
+      <div>
+        <div class="portrait-hero">
+          <div class="corner">No. I</div>
+          <div class="placeholder-tag">Archival · Placeholder</div>
+          <svg class="silhouette" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="phG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC95C" stop-opacity="0.95"/><stop offset="1" stop-color="#8B6F2A" stop-opacity="0.6"/></linearGradient></defs>
+            <!-- shtreimel / fur hat -->
+            <ellipse cx="100" cy="46" rx="62" ry="22" fill="url(#phG1)"/>
+            <ellipse cx="100" cy="46" rx="62" ry="22" fill="none" stroke="#FFD262" stroke-width="1" opacity="0.4"/>
+            <!-- head -->
+            <ellipse cx="100" cy="86" rx="36" ry="42" fill="url(#phG1)"/>
+            <!-- beard -->
+            <path d="M 66 108 Q 100 220 134 108 Q 130 160 100 180 Q 70 160 66 108 Z" fill="url(#phG1)"/>
+            <!-- shoulders / coat -->
+            <path d="M 30 260 Q 30 180 100 180 Q 170 180 170 260 Z" fill="url(#phG1)"/>
+          </svg>
+          <div class="plate">
+            <div class="nn">Grand Rabbi Yoel Teitelbaum</div>
+            <div class="tt">The Satmar Rebbe · 1887–1979</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WE ARE / WE ARE NOT — interactive toggle -->
+<section class="ab-identity">
+  <div class="ab-wrap">
+    <div class="head">
+      <div>
+        <div class="eye">Who we are · Who we are not</div>
+        <h2>Ten things to know, <em>set plainly</em>.</h2>
+      </div>
+      <div class="id-toggle" role="tablist">
+        <button class="on" data-face="are" role="tab">We are</button>
+        <button data-face="arent" role="tab">We are <em style="font-style:italic;">not</em></button>
+      </div>
+    </div>
+
+    <div class="id-board">
+      <div class="id-face are shown">
+        <div class="id-grid">
+          <div class="id-tile"><div class="mark">i</div><span class="badge">Identity</span><h4>A Torah-based educational body.</h4><p>We exist to teach — from classical sources, in plain language, without ideological manipulation.</p></div>
+          <div class="id-tile"><div class="mark">ii</div><span class="badge">Lineage</span><h4>The voice of the Satmar Rebbe.</h4><p>We carry forward what Rabbi Yoel Teitelbaum taught across fifty years of public life and a magnum opus in print.</p></div>
+          <div class="id-tile"><div class="mark">iii</div><span class="badge">Mandate</span><h4>Established by the Satmar community.</h4><p>Founded in 2003 at the request of Satmar leadership — by Rabbi Moshe Dovid Katz, our founding director.</p></div>
+          <div class="id-tile"><div class="mark">iv</div><span class="badge">Endorsements</span><h4>Endorsed by leading rabbinical authorities.</h4><p>Including the Grand Rabbi of Satmar, the Central Rabbinical Congress, and the Badatz of the Eidah HaChareidis.</p></div>
+          <div class="id-tile"><div class="mark">v</div><span class="badge">Funding</span><h4>Funded entirely by community.</h4><p>By Jewish families and readers. No government money. No political money. No foreign grants.</p></div>
+        </div>
+      </div>
+
+      <div class="id-face arent hidden">
+        <div class="id-grid">
+          <div class="id-tile"><div class="mark">i</div><span class="badge">Not</span><h4>Not a political organization.</h4><p>We do not run candidates, lobby legislatures, or endorse any political party — American, Israeli, or otherwise.</p></div>
+          <div class="id-tile"><div class="mark">ii</div><span class="badge">Not</span><h4>Not a protest movement.</h4><p>Our work is study, publication, and press. We do not organize demonstrations.</p></div>
+          <div class="id-tile"><div class="mark">iii</div><span class="badge">Not</span><h4>Not Neturei Karta.</h4><p>Torah Jews is not affiliated with Neturei Karta or any Neturei Karta-identified groups. Please do not conflate us.</p></div>
+          <div class="id-tile"><div class="mark">iv</div><span class="badge">Not</span><h4>Not antisemitic — and not a forum for it.</h4><p>Our message is internal to Judaism. We reject antisemitism in every form, and we reject the conflation of anti-Zionism with it.</p></div>
+          <div class="id-tile"><div class="mark">v</div><span class="badge">Not</span><h4>Not a fringe opinion.</h4><p>Torah opposition to Zionism is the continuous, mainstream position of Chareidi Torah authorities from 1897 to today.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Satmar Rebbe biography with portrait -->
+<section class="ab-bio">
+  <div class="ab-wrap">
+    <div class="ab-bio-grid">
+      <aside class="ab-bio-portrait">
+        <div class="frame">
+          <div class="tag">Archival · Placeholder</div>
+          <svg class="silhouette" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="phG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC95C" stop-opacity="0.95"/><stop offset="1" stop-color="#8B6F2A" stop-opacity="0.55"/></linearGradient></defs>
+            <ellipse cx="100" cy="46" rx="62" ry="22" fill="url(#phG2)"/>
+            <ellipse cx="100" cy="86" rx="36" ry="42" fill="url(#phG2)"/>
+            <path d="M 66 108 Q 100 220 134 108 Q 130 160 100 180 Q 70 160 66 108 Z" fill="url(#phG2)"/>
+            <path d="M 30 260 Q 30 180 100 180 Q 170 180 170 260 Z" fill="url(#phG2)"/>
+          </svg>
+        </div>
+        <div class="caption">
+          <div class="nn">Grand Rabbi Yoel Teitelbaum</div>
+          <div class="dd">The Satmar Rebbe</div>
+          <div class="yy">1887 — 1979 · Sighet → Brooklyn</div>
+        </div>
+      </aside>
+
+      <div class="prose">
+        <h2>Part I · <em>The Satmar Rebbe.</em></h2>
+        <p>Grand Rabbi <b>Yoel Teitelbaum</b> (1887–1979) — known to his followers simply as the Rebbe, and to the world as the Satmar Rav — was the founder of the Satmar Hasidic dynasty and the most consequential opponent of political Zionism in the twentieth century. His entire life was a fight against it.</p>
+
+        <h3>Sighet, 1887.</h3>
+        <p>Born to Rabbi Chananya Yom Tov Lipa Teitelbaum, Chief Rabbi of Sighet and a leader of Hungarian Orthodoxy. His father, grandfather, and great-grandfather had all opposed the modern Zionist project from the moment it began. The position he would later articulate in <em>Vayoel Moshe</em> was not invented — it was inherited, studied, and then defended with unprecedented rigor.</p>
+
+        <h3>The young rabbi, 1911–1934.</h3>
+        <p>He forbade any contact with Zionists — including the Religious Zionist party Mizrachi — and aligned with the Munkacser Rebbe against the compromise position of Agudat Israel. This was not a fringe opinion. It was the mainstream of Hungarian Orthodoxy. In 1934, after years of struggle, he took office as Chief Rabbi of Satmar (Satu Mare).</p>
+
+        <h3>The Holocaust.</h3>
+        <p>When Nazis invaded Hungary in 1944, the Rebbe was caught attempting to flee to Romania and sent to the Klausenberg ghetto, then to Bergen-Belsen. He survived via the Kastner train to Switzerland. His community — his yeshiva, his Hasidim, his world — was annihilated. He lost everything a person can lose, and emerged with his position on Zionism not weakened but deepened.</p>
+
+        <blockquote>
+          "Because of our many sins, in these past years we have suffered bitterly in ways that Israel has not suffered since it became a nation."
+          <span class="src">Vayoel Moshe · Introduction · 1959</span>
+        </blockquote>
+
+        <h3>Brooklyn, 1946.</h3>
+        <p>He arrived in New York on the second day of Rosh Hashanah, 1946, aboard the Vulcania. He settled in Williamsburg with a small group of survivors and founded Congregation Yetev Lev. In 1951 he was appointed President of the anti-Zionist Eidah HaChareidis of Jerusalem. In 1955 he founded the <b>Central Rabbinical Congress</b> — which today still endorses this organization.</p>
+
+        <h3>Vayoel Moshe, 1959–1961.</h3>
+        <p>His magnum opus. Three treatises — on the Three Oaths, on settling the Land, on the Holy Tongue — that have been taught in yeshivas and study groups ever since. Excerpts are still distributed in synagogues worldwide every Shabbos. In 1967, he published <em>Al HaGeulah V'Al HaTemurah</em>, rejecting the theological claim that the Six-Day War was a sign of divine redemption.</p>
+
+        <h3>His passing, 1979.</h3>
+        <p>He passed away on the 26th of Av, 5739. Over one hundred thousand Jews attended his funeral. The town of Kiryas Joel — "Town of Yoel" — in Monroe, New York, is named for him.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission quote -->
+<section class="ab-pull">
+  <div class="ab-wrap">
+    <div class="eye">The mission · In one sentence</div>
+    <h2>"Not in <em>our name.</em>"</h2>
+    <p>This website exists so that what the Satmar Rebbe taught for fifty years is not drowned out by those who were never authorized to speak in the name of Torah Jewry.</p>
+  </div>
+</section>
+
+<!-- Guidance + Endorsements combined -->
+<section class="ab-guidance">
+  <div class="ab-wrap">
+    <div class="head">
+      <div class="eye">Who guides us · Who endorses us</div>
+      <h2>Guided by Torah leaders. <em>Endorsed by the authorities of today.</em></h2>
+      <p class="sub">The claim that Torah opposition to Zionism is a "fringe position" is itself Zionist propaganda. Here are the voices that guide this work — past and present.</p>
+    </div>
+
+    <div class="g-tabs" role="tablist">
+      <button class="on" data-tab="guides" role="tab">Historical Guidance <span class="ct">8</span></button>
+      <button data-tab="endorse" role="tab">Living Endorsements <span class="ct">12</span></button>
+    </div>
+
+    <!-- HISTORICAL GUIDANCE -->
+    <div class="g-panel on" data-panel="guides">
+      <div class="g-grid" id="g-guides"></div>
+    </div>
+
+    <!-- LIVING ENDORSEMENTS -->
+    <div class="g-panel" data-panel="endorse">
+      <div class="g-grid" id="g-endorse"></div>
+    </div>
+
+    <div class="g-footnote">
+      <p>Portraits shown as placeholders pending photographic approval from each authority's office. The listing itself is authoritative: every name here is on the public record as a guide to or endorser of this work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & stance coda -->
+<section class="ab-mission">
+  <div class="ab-wrap">
+    <div class="prose">
+      <h2>Part II · <em>From his voice to ours.</em></h2>
+      <p>In 2003, more than two decades after the Rebbe's passing, the Satmar community asked <b>Rabbi Moshe Dovid Katz</b> to establish an organized body to carry the message to a world that now lived on radio, television, and eventually the internet — media the Rebbe himself had kept at a distance.</p>
+      <p>Torah Jews <em>(Natruna)</em> was founded for that purpose. We are not a political organization. We are not a protest movement. We are a Torah-based educational body whose only job is to make sure the world knows that <b>the State of Israel does not speak for the Jewish people, and Zionism is not Judaism.</b></p>
+      <p>Torah Jews is <b>not affiliated with Neturei Karta</b> or any Neturei Karta-identified groups. We maintain one official X/Twitter account, <b>@TorahJews</b>. We are funded entirely by community members and readers — no government money, no political money.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // ======= Portrait silhouette SVG generator =======
+  function sil(seed){
+    // Two slight variations so cards don't all look identical
+    var v = seed % 3;
+    var hat = (v === 0) ? 'ellipse cx="100" cy="46" rx="62" ry="22"' :
+              (v === 1) ? 'ellipse cx="100" cy="44" rx="56" ry="20"' :
+                          'ellipse cx="100" cy="48" rx="66" ry="24"';
+    var beardD = (v === 0) ? 'M 66 108 Q 100 220 134 108 Q 130 160 100 180 Q 70 160 66 108 Z' :
+                 (v === 1) ? 'M 70 110 Q 100 210 130 110 Q 128 156 100 176 Q 72 156 70 110 Z' :
+                             'M 64 106 Q 100 230 136 106 Q 132 164 100 186 Q 68 164 64 106 Z';
+    var gid = 'pg_' + seed;
+    return '<svg class="silhouette" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC95C" stop-opacity="0.95"/><stop offset="1" stop-color="#8B6F2A" stop-opacity="0.55"/></linearGradient></defs>' +
+      '<' + hat + ' fill="url(#' + gid + ')"/>' +
+      '<ellipse cx="100" cy="86" rx="36" ry="42" fill="url(#' + gid + ')"/>' +
+      '<path d="' + beardD + '" fill="url(#' + gid + ')"/>' +
+      '<path d="M 30 260 Q 30 180 100 180 Q 170 180 170 260 Z" fill="url(#' + gid + ')"/>' +
+    '</svg>';
+  }
+
+  var guides = [
+    {name:'Grand Rabbi Yoel Teitelbaum', title:'The Satmar Rebbe', years:'1887–1979', role:'Founding voice'},
+    {name:'Rabbi Yitzchok Zev Soloveitchik', title:'The Brisker Rav', years:'1886–1959', role:'Halachic authority'},
+    {name:'Rabbi Avraham Yeshaya Karelitz', title:'The Chazon Ish', years:'1878–1953', role:'Leader of the Yishuv'},
+    {name:'Rabbi Chaim Elazar Shapiro', title:'The Munkacser Rebbe', years:'1868–1937', role:'Hungarian Orthodoxy'},
+    {name:'Rabbi Elchonon Wasserman', title:'Rosh Yeshiva · Baranovich', years:'1874–1941', role:'Pre-war gedolim'},
+    {name:'Rabbi Yosef Chaim Sonnenfeld', title:'Chief Rabbi of Jerusalem', years:'1848–1932', role:'Eidah HaChareidis'},
+    {name:'Rabbi Samson Raphael Hirsch', title:'Rabbi of Frankfurt', years:'1808–1888', role:'German Orthodoxy'},
+    {name:'Rabbi Chaim Soloveitchik', title:'Reb Chaim Brisker', years:'1853–1918', role:'Lithuanian tradition'}
+  ];
+
+  var endorse = [
+    {name:'Rabbi Aaron Teitelbaum', title:'Grand Rabbi of Satmar', role:'Today', org:'Kiryas Joel'},
+    {name:'Rabbi Zalman Leib Teitelbaum', title:'Grand Rabbi of Satmar', role:'Today', org:'Williamsburg'},
+    {name:'Rabbi Meir Soloveitchik', title:'Rosh Yeshiva of Brisk', role:'Today', org:'Jerusalem'},
+    {name:'Central Rabbinical Congress', title:'CRC · Hisachdus HaRabbonim', role:'Institutional', org:'Founded 1955'},
+    {name:'Badatz of the Eidah Chareidis', title:'Rabbinical Court', role:'Institutional', org:'Jerusalem'},
+    {name:'Rabbi Yisroel Hager', title:'Vizhnitzer Rebbe', role:'Today', org:'Bnei Brak'},
+    {name:'Rabbi Dovid Feinstein', title:'Rosh Yeshiva · Tiferes Yerushalayim', role:'Today', org:'New York'},
+    {name:'Rabbi Chaim Kanievsky', title:'Posek ha-Dor', role:'Recently', org:'Bnei Brak'},
+    {name:'Rabbi Tovia Weiss', title:'Av Beis Din · Eidah HaChareidis', role:'Today', org:'Jerusalem'},
+    {name:'Rabbi Moshe Sternbuch', title:'Ra\'avad · Eidah HaChareidis', role:'Today', org:'Jerusalem'},
+    {name:'Rabbi Menachem Mendel Hager', title:'Vizhnitzer Rebbe of Monsey', role:'Today', org:'Monsey, NY'},
+    {name:'Rabbi Yaakov Perlow', title:'Novominsker Rebbe', role:'Recently', org:'Brooklyn'}
+  ];
+
+  function card(p, i, kind, seed){
+    var tag = kind === 'endorse' ? 'Endorsement' : 'Guidance';
+    var num = String(i+1).padStart(2, '0');
+    return '<div class="g-card">' +
+      '<div class="g-portrait">' + sil(seed) +
+      '<div class="tag">No. ' + num + '</div>' +
+      '<div class="num">' + (i+1) + '.</div>' +
+      '<div class="role-chip">' + tag + '</div>' +
+      '</div>' +
+      '<div class="g-meta">' +
+        '<div class="nn">' + p.name + '</div>' +
+        '<div class="dd">' + p.title + '</div>' +
+        '<div class="yy">' + (p.years || (p.role + (p.org ? ' · ' + p.org : ''))) + '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  document.getElementById('g-guides').innerHTML = guides.map(function(p,i){ return card(p,i,'guides',i+1); }).join('');
+  document.getElementById('g-endorse').innerHTML = endorse.map(function(p,i){ return card(p,i,'endorse',i+101); }).join('');
+
+  // Tabs
+  document.querySelectorAll('.g-tabs button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.g-tabs button').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      var t = b.getAttribute('data-tab');
+      document.querySelectorAll('.g-panel').forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-panel') === t); });
+    });
+  });
+
+  // Identity toggle (We are / We are not)
+  document.querySelectorAll('.id-toggle button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.id-toggle button').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      var t = b.getAttribute('data-face');
+      document.querySelectorAll('.id-face').forEach(function(f){
+        var match = f.classList.contains(t);
+        f.classList.toggle('shown', match);
+        f.classList.toggle('hidden', !match);
+      });
+    });
+  });
+})();
+</script>
+
+</main><footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="brand-lg">Torah Jews <em>· Natruna</em></div>
+        <div class="blurb">Carrying forward the voice of <b>Grand Rabbi Joel Teitelbaum of Satmar</b> (1887–1979), who devoted his life to articulating the Torah's opposition to Zionism. Founded 2003 at the request of the Satmar community.</div>
+      </div>
+      <div>
+        <h5>Torah on Zionism</h5>
+        <ul>
+          <li><a href="three-oaths.html">The Three Oaths</a></li>
+          <li><a href="vayoel-moshe.html">Vayoel Moshe</a></li>
+          <li><a href="voices-of-the-gedolim.html">Voices of the Gedolim</a></li>
+          <li><a href="timeline.html">Timeline of Opposition</a></li>
+          <li><a href="faq.html">Frequently Asked</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="press.html">Press &amp; Media</a></li>
+          <li><a href="voices.html">Voices</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="subscribe.html">Subscribe to Updates</a></li>
+          <li><a href="books.html">Books</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Follow &amp; Contact</h5>
+        <ul>
+          <li><a href="https://x.com/TorahJews">@TorahJews · 𝕏</a></li>
+          <li><a href="https://www.facebook.com/torahjews/">Facebook</a></li>
+          <li><a href="https://www.instagram.com/torahjews/">Instagram</a></li>
+          <li>183 Wilson Street, PMB 162 · Brooklyn, NY 11211</li>
+          <li><a href="tel:+17188417053">718-841-7053</a> · <a href="mailto:info@torahjews.org">info@torahjews.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2003–2026 Copyright Torah Jews · 501(c)(3)</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+<script>
+  const mt = document.getElementById('mt');
+  const mm = document.getElementById('mobile-menu');
+  if (mt) mt.addEventListener('click', () => mm.classList.toggle('open'));
+</script>
+<script>(function(){var tr=document.getElementById('ticker-run');if(tr)tr.innerHTML=tr.innerHTML+tr.innerHTML;var mt=document.getElementById('mt');var mm=document.getElementById('mobile-menu');if(mt&&mm){mt.addEventListener('click',function(){mm.classList.toggle('open');});}})();</script></body></html>

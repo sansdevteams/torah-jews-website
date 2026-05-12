@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" />
+<meta name="viewport" content="width=390, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,ital,wght@8..60,0,400..700;8..60,1,400..700&family=Frank+Ruhl+Libre:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mobile.css?v=1777053788693">
+<style>
+  .m-amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0; }
+  .m-amt { background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 8px; text-align: center; font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .m-amt.wide { grid-column: span 3; font-size: 15px; padding: 12px; font-weight: 500; }
+  .m-amt.sel { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .m-input { width: 100%; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 6px; font-family: var(--serif); font-size: 16px; background: #fff; margin-bottom: 10px; }
+  .m-form-label { font-family: var(--ui); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: block; font-weight: 600; }
+  .m-methods { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+  .m-method { flex: 1; min-width: 110px; padding: 10px; background: #fff; border: 1px solid var(--rule); border-radius: 6px; text-align: center; font-family: var(--ui); font-size: 12px; font-weight: 600; color: var(--ink); }
+  .m-impact { background: #fff; border: 1px solid var(--rule); padding: 18px; margin: 14px 0; display: flex; gap: 14px; }
+  .m-impact .n { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--gold); font-weight: 500; flex: 0 0 auto; min-width: 48px; }
+  .m-impact .t { font-family: var(--serif); font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+  .m-impact .t b { color: var(--ink); display: block; font-weight: 600; margin-bottom: 4px; }
+</style>
+<title>Support — Torah Jews (Mobile)</title></head>
+<body>
+
+<div class="m-announce"><b>The State of Israel does NOT represent Judaism</b> or the Jewish People.</div>
+<div class="m-ticker"><div class="m-ticker-label"><span class="m-ticker-dot"></span>Breaking</div><div class="m-ticker-track"><div class="m-ticker-run" id="mticker">
+  <span class="m-ticker-item"><b>Apr 12</b> Rabbi Katz statement on Rafie Nia Synagogue</span>
+  <span class="m-ticker-item"><b>Apr 7</b> Torah Jews condemns Golders Green attack</span>
+</div></div></div>
+
+<nav class="m-nav">
+  <a class="m-brand" href="index.html"><span class="m-brand-mark"></span><span class="m-brand-txt"><span class="wm">Torah Jews</span><br><span class="sb">Natruna · Est. 2003</span></span></a>
+  <button class="m-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="m-menu" id="menu">
+  <div class="m-menu-top"><span style="font-family:var(--ui);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);">Menu</span><button class="m-menu-close" id="menuClose">✕</button></div>
+  <nav class="m-menu-list">
+    <a href="index.html"><em>i.</em> Home</a>
+    <a href="about.html"><em>ii.</em> About</a>
+    <a href="torah-on-zionism.html"><em>iii.</em> Torah on Zionism</a>
+    <a href="rabbinical-quotations.html"><em>iv.</em> Rabbinical Quotations</a>
+    <a href="support.html"><em>v.</em> Support</a>
+  </nav>
+  <div class="m-menu-foot"><a class="cta" href="https://x.com/TorahJews">Follow @TorahJews on 𝕏</a><div class="mt">183 Wilson Street, Brooklyn NY</div></div>
+</div>
+
+<section class="m-sec">
+  <div class="m-kick">§ Support</div>
+  <h1>Help us set the <em>record</em> straight.</h1>
+  <p class="dek">Torah Jews is a 501(c)(3) non-profit organization. Every contribution is tax-deductible in the United States and funds the publication, translation, and distribution of Torah scholarship on Zionism.</p>
+</section>
+
+<section class="m-sec parchment">
+  <div class="m-num">i.</div>
+  <div class="m-kick">Make a contribution</div>
+  <h2>Choose an <em>amount</em>.</h2>
+
+  <form onsubmit="return false;">
+    <div class="m-amounts">
+      <div class="m-amt">$18</div>
+      <div class="m-amt">$36</div>
+      <div class="m-amt sel">$180</div>
+      <div class="m-amt">$360</div>
+      <div class="m-amt">$1,800</div>
+      <div class="m-amt">$5,000</div>
+      <div class="m-amt wide">Other amount →</div>
+    </div>
+
+    <label class="m-form-label">Frequency</label>
+    <div class="m-methods">
+      <div class="m-method" style="background:var(--ink);color:#fff;border-color:var(--ink);">One-time</div>
+      <div class="m-method">Monthly</div>
+      <div class="m-method">Annually</div>
+    </div>
+
+    <label class="m-form-label">Full name</label>
+    <input class="m-input" type="text" placeholder="Your name" />
+
+    <label class="m-form-label">Email</label>
+    <input class="m-input" type="email" placeholder="you@example.com" />
+
+    <label class="m-form-label">Payment method</label>
+    <div class="m-methods">
+      <div class="m-method">Card</div>
+      <div class="m-method">PayPal</div>
+      <div class="m-method">Bank</div>
+      <div class="m-method">Check</div>
+    </div>
+
+    <button type="submit" class="m-btn red" style="margin-top:12px;">Contribute $180 →</button>
+    <p style="font-family:var(--ui);font-size:11px;color:var(--muted);text-align:center;margin-top:12px;letter-spacing:0.02em;">Secure processing · Tax-deductible · EIN 20-1234567</p>
+  </form>
+</section>
+
+<section class="m-sec">
+  <div class="m-num">ii.</div>
+  <div class="m-kick">Where it goes</div>
+  <h2>Your <em>impact</em>.</h2>
+
+  <div class="m-impact"><div class="n">$36</div><div class="t"><b>One printed booklet</b>Prints and mails a copy of <em>Truth and Peace</em> or <em>Vayoel Moshe</em> excerpts to a reader, teacher, or journalist who requests one.</div></div>
+  <div class="m-impact"><div class="n">$180</div><div class="t"><b>One public statement</b>Funds the translation, copyediting, and distribution of one rabbinical statement in English, Yiddish, and Hebrew.</div></div>
+  <div class="m-impact"><div class="n">$1,800</div><div class="t"><b>One month of operations</b>Sustains office, translation staff, and digital infrastructure for a full month.</div></div>
+  <div class="m-impact"><div class="n">$18,000</div><div class="t"><b>A full translation project</b>Funds the translation of a complete volume of rabbinical writings — the kind of work that keeps this tradition alive for the English-speaking world.</div></div>
+</section>
+
+<section class="m-sec navy">
+  <div class="m-kick">Other ways to give</div>
+  <h2 style="color:#fff;">Beyond a <em style="color:#FFD262;">contribution</em>.</h2>
+  <div style="display:flex;flex-direction:column;gap:2px;margin-top:14px;">
+    <a href="#" style="display:block;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.15);color:#fff;font-family:var(--serif);font-size:17px;">Donor-advised funds →</a>
+    <a href="#" style="display:block;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.15);color:#fff;font-family:var(--serif);font-size:17px;">Stock & securities →</a>
+    <a href="#" style="display:block;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.15);color:#fff;font-family:var(--serif);font-size:17px;">Planned giving / bequests →</a>
+    <a href="#" style="display:block;padding:18px 0;color:#fff;font-family:var(--serif);font-size:17px;">Corporate matching →</a>
+  </div>
+  <p style="color:rgba(255,255,255,0.75);margin-top:20px;font-size:14px;">For wire transfer instructions, matching gifts, or larger contributions, email <a href="mailto:donate@torahjews.org" style="color:#FFD262;">donate@torahjews.org</a>.</p>
+</section>
+
+<section class="m-sec parchment">
+  <div class="m-kick">Non-financial support</div>
+  <h2>Other ways to <em>help</em>.</h2>
+
+  <div class="m-cta">
+    <span class="n">i.</span>
+    <h4>Follow @TorahJews on 𝕏.</h4>
+    <p>The fastest way to help is to amplify our voice where the conversation is actually happening.</p>
+    <a class="m-btn x" href="https://x.com/TorahJews">Follow on 𝕏</a>
+  </div>
+  <div class="m-cta">
+    <span class="n">ii.</span>
+    <h4>Subscribe to our updates.</h4>
+    <p>Get new statements and long-form essays as they're published.</p>
+    <a class="m-btn ghost" href="subscribe.html">Subscribe</a>
+  </div>
+  <div class="m-cta">
+    <span class="n">iii.</span>
+    <h4>Volunteer.</h4>
+    <p>Translators, researchers, and digital organizers are always needed.</p>
+    <a class="m-btn ghost" href="get-involved.html">Get involved</a>
+  </div>
+</section>
+
+<footer class="m-footer">
+  <div class="brand-lg">Torah Jews <em>· Natruna</em></div>
+  <div class="blurb">Carrying forward the voice of <b>Grand Rabbi Joel Teitelbaum of Satmar</b> (1887–1979).</div>
+  <div class="col"><h5>Contact</h5><ul>
+    <li><a href="https://x.com/TorahJews">@TorahJews · 𝕏</a></li>
+    <li>183 Wilson Street, PMB 162, Brooklyn NY 11211</li>
+    <li><a href="tel:+17188417053">718-841-7053</a></li>
+    <li><a href="mailto:info@torahjews.org">info@torahjews.org</a></li>
+  </ul></div>
+  <div class="legal"><span>© 2003–2026 Torah Jews · 501(c)(3) · EIN 20-1234567</span></div>
+</footer>
+
+<script>
+(function(){
+  var tr=document.getElementById('mticker');if(tr)tr.innerHTML=tr.innerHTML+tr.innerHTML;
+  var b=document.getElementById('burger'),m=document.getElementById('menu'),c=document.getElementById('menuClose');
+  if(b)b.onclick=function(){m.classList.add('open');};if(c)c.onclick=function(){m.classList.remove('open');};
+  document.querySelectorAll('.m-amt').forEach(function(el){el.addEventListener('click',function(){document.querySelectorAll('.m-amt').forEach(function(x){x.classList.remove('sel');});el.classList.add('sel');});});
+  document.querySelectorAll('.m-method').forEach(function(el){el.addEventListener('click',function(){var p=el.parentElement;p.querySelectorAll('.m-method').forEach(function(x){x.style.background='#fff';x.style.color='var(--ink)';x.style.borderColor='var(--rule)';});el.style.background='var(--ink)';el.style.color='#fff';el.style.borderColor='var(--ink)';});});
+})();
+</script>
+</body></html>
