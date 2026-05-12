@@ -36,11 +36,24 @@
   <script>
     const frame = document.getElementById("siteFrame");
 
-    if (window.innerWidth <= 700) {
-      frame.src = "/mobile/index.html";
-    } else {
-      frame.src = "/desktop/index.html";
+    function updateView() {
+      const isMobile = window.innerWidth <= 700;
+
+      const target = isMobile
+        ? "/mobile/index.html"
+        : "/desktop/index.html";
+
+      // prevent reload loop
+      if (!frame.src.includes(target)) {
+        frame.src = target;
+      }
     }
+
+    // run first time
+    updateView();
+
+    // auto update on resize
+    window.addEventListener("resize", updateView);
   </script>
 
 </body>
